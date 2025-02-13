@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Sasanka Nimes</title>
+  <title>Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     /* Existing styles */
@@ -122,6 +122,7 @@
       flex: 1 1 300px;
     }
 
+    /* Mobile specific styles */
     @media (max-width: 600px) {
       nav a {
         font-size: 16px;
@@ -168,6 +169,32 @@
         max-width: 100%;
         height: auto;
       }
+
+      /* Bottom navigation bar for mobile view */
+      .bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        background-color: #111;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        z-index: 1000;
+        border-top: 1px solid #00FFFF;
+      }
+
+      .bottom-nav a {
+        color: #00FFFF;
+        text-decoration: none;
+        font-size: 14px;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .bottom-nav a:hover {
+        background-color: #222;
+      }
     }
 
     html {
@@ -176,7 +203,6 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -215,7 +241,7 @@
 </head>
 <body>
   <header>
-    <h2>My Hacker-Themed Website</h2>
+    <h2>Sasanka Nimes</h2>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -286,5 +312,13 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
+
+  <!-- Bottom navigation bar for mobile view -->
+  <div class="bottom-nav">
+    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+  </div>
 </body>
 </html>
+
