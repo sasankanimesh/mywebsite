@@ -12,33 +12,21 @@
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 0;
-      padding-top: 80px; /* Prevent body content from being hidden under the fixed header */
     }
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
-      z-index: 1000; /* Ensure header is on top of other content */
     }
     nav {
-      position: fixed;
-      top: 80px; /* Align it below the header */
-      left: 0;
-      right: 0;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       background-color: #111;
-      padding: 10px 0;
-      z-index: 999;
-      width: 100%;
+      padding: 20px;
     }
     nav a {
       color: #00FFFF;
@@ -54,10 +42,12 @@
       background-color: #222;
     }
     section {
+      display: none;
       padding: 50px;
       text-align: center;
-      min-height: 100vh; /* Make each section fill the screen */
-      padding-top: 100px; /* Make space for the sticky navbar */
+    }
+    section.active {
+      display: block;
     }
     h1 {
       text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
@@ -87,7 +77,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/481px-Cat03.jpg') no-repeat center;
+      background: url('your-photo.jpg') no-repeat center;
       background-size: cover;
       opacity: 0.7;
       color: #fff;
@@ -105,9 +95,10 @@
     }
   </style>
   <script>
-    function scrollToSection(id) {
-      const section = document.getElementById(id);
-      section.scrollIntoView({ behavior: 'smooth' });
+    function showSection(id) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -137,15 +128,15 @@
   </header>
 
   <nav>
-    <a href="#" onclick="scrollToSection('whoami')">Whoami</a>
-    <a href="#" onclick="scrollToSection('projects')">Projects</a>
-    <a href="#" onclick="scrollToSection('experience')">Experience</a>
-    <a href="#" onclick="scrollToSection('certs')">Certifications</a>
-    <a href="#" onclick="scrollToSection('skills')">Skills</a>
-    <a href="#" onclick="scrollToSection('education')">Education</a>
+    <a href="#" onclick="showSection('whoami')">Whoami</a>
+    <a href="#" onclick="showSection('projects')">Projects</a>
+    <a href="#" onclick="showSection('experience')">Experience</a>
+    <a href="#" onclick="showSection('certs')">Certifications</a>
+    <a href="#" onclick="showSection('skills')">Skills</a>
+    <a href="#" onclick="showSection('education')">Education</a>
   </nav>
 
-  <section id="whoami">
+  <section id="whoami" class="active">
     <div class="cmd-simulation" id="cmd-output"></div>
   </section>
 
