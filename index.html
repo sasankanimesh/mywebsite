@@ -70,51 +70,81 @@
       background-color: #00FFFF;
       color: #000;
     }
-    #whoami {
-      position: relative;
-      height: 100vh;
+    .whoami-content {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: url('your-photo.jpg') no-repeat center;
-      background-size: cover;
-      opacity: 0.7;
-      color: #fff;
+      align-items: flex-start;
+      gap: 20px;
     }
     .cmd-simulation {
-      background-color: #000;
+      background-color: #111;
       padding: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      width: 80%;
-      max-width: 600px;
-      font-family: "Courier New", monospace;
-      font-size: 16px;
+      box-shadow: 0 0 10px #00FF00;
+      text-align: left;
+      font-size: 18px;
+      white-space: pre-wrap;
+      line-height: 1.5;
       color: #00FF00;
+      flex: 1 1 300px;
+    }
+    #whoami-photo {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+    #whoami-video {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 16px;
+        padding: 5px;
+      }
+      .whoami-content {
+        flex-direction: column;
+      }
     }
   </style>
   <script>
     function showSection(id) {
+      // Hide all sections
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
+
+      // Show the selected section
       document.getElementById(id).classList.add('active');
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const cmdOutput = document.getElementById('cmd-output');
-      const text = "user@localhost:~$ whoami\nYour Name\nHacker, Developer, Cybersecurity Enthusiast";
-      let i = 0;
-
-      function typeText() {
-        if (i < text.length) {
-          cmdOutput.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typeText, 100);
+    function typeEffect(element, text, delay = 100) {
+      let index = 0;
+      function type() {
+        if (index < text.length) {
+          element.textContent += text[index];
+          index++;
+          setTimeout(type, delay);
         }
       }
-      typeText();
-    });
+      type();
+    }
+
+    function loadWhoamiContent() {
+      const cmdOutput = document.getElementById('cmd-output');
+      const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
+      
+      // Clear the content to prevent duplicate text
+      cmdOutput.textContent = "";
+      
+      // Start typing effect
+      typeEffect(cmdOutput, outputText, 80);
+    }
   </script>
 </head>
 <body>
@@ -128,7 +158,7 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('whoami')">Whoami</a>
+    <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
     <a href="#" onclick="showSection('projects')">Projects</a>
     <a href="#" onclick="showSection('experience')">Experience</a>
     <a href="#" onclick="showSection('certs')">Certifications</a>
@@ -136,8 +166,16 @@
     <a href="#" onclick="showSection('education')">Education</a>
   </nav>
 
-  <section id="whoami" class="active">
-    <div class="cmd-simulation" id="cmd-output"></div>
+  <section id="whoami">
+    <h1>Whoami</h1>
+    <div class="whoami-content">
+      <div class="cmd-simulation" id="cmd-output"></div>
+      <video id="whoami-video" controls>
+        <source src="your-introduction-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
+    </div>
   </section>
 
   <section id="projects">
