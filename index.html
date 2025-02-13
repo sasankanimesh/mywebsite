@@ -43,6 +43,7 @@
       padding: 5px 10px;
       border: 1px solid transparent;
       transition: all 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
@@ -135,11 +136,22 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Always scroll to the top (Whoami section) when the page is first loaded
+      window.scrollTo(0, 0);
+
       // Initialize the "whoami" section CMD simulation
       loadWhoamiContent();
+
+      // Set up smooth scrolling for all nav links without updating the URL
+      document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('href').substring(1);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
     });
 
-    // Initialize the "whoami" section CMD simulation
     function typeEffect(element, text, delay = 100) {
       let index = 0;
       function type() {
