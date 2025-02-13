@@ -35,7 +35,6 @@
 
     header h2 {
       margin: 0;
-      font-size: 22px;
     }
 
     nav {
@@ -128,48 +127,55 @@
     }
 
     @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .header-links {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      .header-links a {
+        font-size: 14px;
+        margin: 5px 0;
+        padding: 8px;
+        width: 100%;
+      }
+
       nav {
         display: none;
         width: 100%;
+        text-align: center;
         flex-direction: column;
+        background-color: #111;
+      }
+
+      nav.active {
+        display: flex;
       }
 
       nav a {
-        font-size: 18px;
+        font-size: 16px;
         padding: 10px;
         width: 100%;
         text-align: center;
       }
 
-      nav a:hover {
-        background-color: #222;
-      }
-
-      header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #111;
-        padding: 10px;
-        color: #00FFFF;
-        z-index: 1000;
-      }
-
-      header h2 {
-        font-size: 18px;
-      }
-
-      .menu-btn {
+      .hamburger {
         display: block;
         cursor: pointer;
-        font-size: 25px;
-        color: #00FFFF;
-        background: none;
-        border: none;
       }
 
-      .menu-btn.open + nav {
-        display: flex;
+      .hamburger span {
+        display: block;
+        background-color: #00FFFF;
+        height: 4px;
+        width: 30px;
+        margin: 6px 0;
+        transition: 0.4s;
       }
 
       .whoami-content {
@@ -206,7 +212,6 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -222,10 +227,9 @@
         });
       });
 
-      // Toggle menu for mobile view
-      const menuBtn = document.querySelector('.menu-btn');
-      menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('open');
+      // Toggle nav menu on hamburger click
+      document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('nav').classList.toggle('active');
       });
     });
 
@@ -252,7 +256,11 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
-    <button class="menu-btn">&#9776;</button>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -323,4 +331,3 @@
   </section>
 </body>
 </html>
-
