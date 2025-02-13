@@ -70,6 +70,28 @@
       color: #000;
     }
 
+    /* Mobile menu styles */
+    .mobile-nav {
+      display: none;
+    }
+
+    .mobile-nav a {
+      color: #00FFFF;
+      text-decoration: none;
+      margin: 10px 0;
+      font-size: 18px;
+      padding: 10px;
+      display: block;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      background-color: #111;
+    }
+
+    .mobile-nav a:hover {
+      background-color: #00FFFF;
+      color: #000;
+    }
+
     section {
       padding: 100px 20px;
       text-align: center;
@@ -122,13 +144,20 @@
       flex: 1 1 300px;
     }
 
-    /* Mobile specific styles */
     @media (max-width: 600px) {
-      nav a {
-        font-size: 16px;
-        padding: 10px 0;
+      nav {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
         width: 100%;
-        text-align: center;
+        background-color: #111;
+        padding: 10px;
+        z-index: 1001;
       }
 
       .header-links {
@@ -168,32 +197,6 @@
       img, video {
         max-width: 100%;
         height: auto;
-      }
-
-      /* Bottom navigation bar for mobile view */
-      .bottom-nav {
-        display: flex;
-        justify-content: space-around;
-        background-color: #111;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 10px;
-        z-index: 1000;
-        border-top: 1px solid #00FFFF;
-      }
-
-      .bottom-nav a {
-        color: #00FFFF;
-        text-decoration: none;
-        font-size: 14px;
-        padding: 10px;
-        text-align: center;
-      }
-
-      .bottom-nav a:hover {
-        background-color: #222;
       }
     }
 
@@ -251,11 +254,15 @@
       <a href="#education">Education</a>
     </nav>
     <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
   </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav">
+    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+  </div>
 
   <section id="whoami">
     <h1>Whoami</h1>
@@ -312,13 +319,7 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
-
-  <!-- Bottom navigation bar for mobile view -->
-  <div class="bottom-nav">
-    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-  </div>
 </body>
 </html>
+
 
