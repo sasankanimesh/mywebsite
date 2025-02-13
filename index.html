@@ -12,21 +12,30 @@
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
     }
     header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
     }
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       background-color: #111;
-      padding: 20px;
+      padding: 10px 0;
+      width: 100%;
     }
     nav a {
       color: #00FFFF;
@@ -45,6 +54,8 @@
       display: none;
       padding: 50px;
       text-align: center;
+      flex: 1;
+      margin-bottom: 60px; /* Space for footer */
     }
     section.active {
       display: block;
@@ -148,24 +159,6 @@
   </script>
 </head>
 <body>
-  <header>
-    <h2>My Hacker-Themed Website</h2>
-    <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-    </div>
-  </header>
-
-  <nav>
-    <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
-    <a href="#" onclick="showSection('projects')">Projects</a>
-    <a href="#" onclick="showSection('experience')">Experience</a>
-    <a href="#" onclick="showSection('certs')">Certifications</a>
-    <a href="#" onclick="showSection('skills')">Skills</a>
-    <a href="#" onclick="showSection('education')">Education</a>
-  </nav>
-
   <section id="whoami">
     <h1>Whoami</h1>
     <div class="whoami-content">
@@ -221,6 +214,23 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
+
+  <header>
+    <h2>My Hacker-Themed Website</h2>
+    <div class="header-links">
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+    </div>
+    <nav>
+      <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
+      <a href="#" onclick="showSection('projects')">Projects</a>
+      <a href="#" onclick="showSection('experience')">Experience</a>
+      <a href="#" onclick="showSection('certs')">Certifications</a>
+      <a href="#" onclick="showSection('skills')">Skills</a>
+      <a href="#" onclick="showSection('education')">Education</a>
+    </nav>
+  </header>
 </body>
 </html>
 
