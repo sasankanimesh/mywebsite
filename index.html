@@ -31,22 +31,12 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
-      flex-wrap: wrap;
-    }
-
-    header h2 {
-      flex: 1;
-      font-size: 24px;
-      margin: 0;
     }
 
     nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      flex: 2;
-      justify-content: space-around;
-      width: 100%;
     }
 
     nav a {
@@ -65,14 +55,9 @@
       background-color: #222;
     }
 
-    .header-links {
-      display: flex;
-      justify-content: flex-start;
-      width: 100%;
-      margin-top: 10px;
-    }
-
     .header-links a {
+      color: #00FFFF;
+      text-decoration: none;
       margin: 0 10px;
       font-size: 16px;
       border: 1px solid #00FFFF;
@@ -138,43 +123,50 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       nav a {
         font-size: 16px;
-        padding: 10px;
-        margin: 5px 0;
+        padding: 10px 0;
         width: 100%;
-        text-align: left;
+        text-align: center;
       }
 
       .header-links {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
 
       .header-links a {
-        width: 100%;
-        text-align: left;
+        font-size: 14px;
         margin: 5px 0;
+        padding: 8px;
+        width: 100%;
       }
 
       .whoami-content {
         flex-direction: column;
-        align-items: center;
       }
 
       #whoami-photo, #whoami-video {
         width: 100%;
-        margin-bottom: 20px;
+        max-width: 300px;
+      }
+
+      section {
+        padding: 50px 10px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p, ul {
+        font-size: 16px;
+        padding: 0 10px;
+      }
+
+      img, video {
+        max-width: 100%;
+        height: auto;
       }
     }
 
@@ -296,6 +288,7 @@
   </section>
 </body>
 </html>
+
 
 
 
