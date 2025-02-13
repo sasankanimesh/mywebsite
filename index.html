@@ -74,7 +74,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
       gap: 20px;
     }
     .cmd-simulation {
@@ -138,6 +138,11 @@
     function loadWhoamiContent() {
       const cmdOutput = document.getElementById('cmd-output');
       const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
+      
+      // Clear the content to prevent duplicate text
+      cmdOutput.textContent = "";
+      
+      // Start typing effect
       typeEffect(cmdOutput, outputText, 80);
     }
   </script>
@@ -165,11 +170,11 @@
     <h1>Whoami</h1>
     <div class="whoami-content">
       <div class="cmd-simulation" id="cmd-output"></div>
-      <img id="whoami-photo" src="your-photo.jpg" alt="My Photo">
       <video id="whoami-video" controls>
         <source src="your-introduction-video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
     </div>
   </section>
 
