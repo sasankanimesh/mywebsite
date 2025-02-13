@@ -6,45 +6,30 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #111;
-  padding: 20px;
-  color: #00FFFF;
-  position: fixed; /* Fix the header at the top */
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000; /* Ensure the header is above other content */
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: #111;
-  padding: 20px;
-  position: fixed; /* Fix the nav bar at the top */
-  top: 60px; /* Adjust this value to prevent overlap with the header */
-  width: 100%;
-  z-index: 999; /* Slightly lower than the header */
-}
-
-body {
-  background-color: #000;
-  color: #00FF00;
-  font-family: 'Share Tech Mono', monospace;
-  margin: 0;
-  padding-top: 120px; /* Add padding to the top to avoid content being hidden by the fixed header/nav */
-}
-
-section {
-  display: none;
-  padding: 50px;
-  text-align: center;
-}
+    body {
+      background-color: #000;
+      color: #00FF00;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
+      padding: 20px;
+      color: #00FFFF;
+      position: fixed;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: #111;
+      padding: 20px;
+      position: fixed;
+    }
     nav a {
       color: #00FFFF;
       text-decoration: none;
@@ -58,7 +43,11 @@ section {
       border-color: #00FFFF;
       background-color: #222;
     }
-
+    section {
+      display: none;
+      padding: 50px;
+      text-align: center;
+    }
     section.active {
       display: block;
     }
@@ -236,5 +225,3 @@ section {
   </section>
 </body>
 </html>
-
-
