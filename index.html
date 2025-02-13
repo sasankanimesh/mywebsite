@@ -12,30 +12,37 @@
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
     }
     header {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      z-index: 1000;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .header-links a {
+      color: #00FFFF;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+      border: 1px solid #00FFFF;
+      padding: 5px 10px;
+      transition: all 0.3s;
+    }
+    .header-links a:hover {
+      background-color: #00FFFF;
+      color: #000;
     }
     nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       background-color: #111;
-      padding: 10px 0;
-      width: 100%;
+      padding: 20px;
     }
     nav a {
       color: #00FFFF;
@@ -54,8 +61,6 @@
       display: none;
       padding: 50px;
       text-align: center;
-      flex: 1;
-      margin-bottom: 60px; /* Space for footer */
     }
     section.active {
       display: block;
@@ -67,19 +72,6 @@
     p {
       font-size: 18px;
       line-height: 1.6;
-    }
-    .header-links a {
-      color: #00FFFF;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 16px;
-      border: 1px solid #00FFFF;
-      padding: 5px 10px;
-      transition: all 0.3s;
-    }
-    .header-links a:hover {
-      background-color: #00FFFF;
-      color: #000;
     }
     .whoami-content {
       display: flex;
@@ -159,62 +151,6 @@
   </script>
 </head>
 <body>
-  <section id="whoami">
-    <h1>Whoami</h1>
-    <div class="whoami-content">
-      <div class="cmd-simulation" id="cmd-output"></div>
-      <video id="whoami-video" controls>
-        <source src="your-introduction-video.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
-    </div>
-  </section>
-
-  <section id="projects">
-    <h1>Projects</h1>
-    <p>Here are some of the projects I've worked on:</p>
-    <ul>
-      <li>Penetration Testing Tool (Web App + Automation)</li>
-      <li>IoT-Based Indoor Navigation System</li>
-      <li>Healthcare Mobile Application (React Native)</li>
-    </ul>
-  </section>
-
-  <section id="experience">
-    <h1>Experience</h1>
-    <p>Experience includes:</p>
-    <ul>
-      <li>Ethical Hacking coursework penetration tests on enterprise networks.</li>
-      <li>Digital forensics case analysis and report preparation.</li>
-      <li>Web application security assessments and vulnerability scans.</li>
-    </ul>
-  </section>
-
-  <section id="certs">
-    <h1>Certifications</h1>
-    <p>Here are my certifications:</p>
-    <ul>
-      <li>TryHackMe Penetration Tester Path Completion</li>
-      <li>Cybersecurity Training & Internship (Oeson)</li>
-    </ul>
-  </section>
-
-  <section id="skills">
-    <h1>Skills</h1>
-    <p>Technical skills:</p>
-    <ul>
-      <li>Penetration Testing & Vulnerability Scanning</li>
-      <li>Programming: Python, Java, JavaScript, React, Flutter</li>
-      <li>Database Management: PostgreSQL, MongoDB</li>
-    </ul>
-  </section>
-
-  <section id="education">
-    <h1>Education</h1>
-    <p>Computer Security Undergraduate, Plymouth University</p>
-  </section>
-
   <header>
     <h2>My Hacker-Themed Website</h2>
     <div class="header-links">
@@ -226,11 +162,29 @@
       <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
       <a href="#" onclick="showSection('projects')">Projects</a>
       <a href="#" onclick="showSection('experience')">Experience</a>
-      <a href="#" onclick="showSection('certs')">Certifications</a>
-      <a href="#" onclick="showSection('skills')">Skills</a>
-      <a href="#" onclick="showSection('education')">Education</a>
     </nav>
   </header>
+
+  <section id="whoami" class="active">
+    <h1>Who Am I?</h1>
+    <div class="whoami-content">
+      <div class="cmd-simulation" id="cmd-output"></div>
+      <img id="whoami-photo" src="your-photo.jpg" alt="Whoami Photo">
+      <video id="whoami-video" controls>
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  <section id="projects">
+    <h1>Projects</h1>
+    <p>Here are some of the projects I've worked on:</p>
+    <!-- Add project details here -->
+  </section>
+  <section id="experience">
+    <h1>Experience</h1>
+    <p>Details about my work experience.</p>
+  </section>
 </body>
 </html>
 
