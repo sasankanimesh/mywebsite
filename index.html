@@ -11,28 +11,32 @@
       color: #00FF00;
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
-      padding-top: 120px; /* Add padding to the top to avoid content being hidden by the fixed header/nav */
+      padding: 0;
+      overflow-x: hidden;
     }
     header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #111;
-      padding: 20px;
-      color: #00FFFF;
       position: fixed;
-      width: 100%;
       top: 0;
       left: 0;
+      width: 100%;
+      background-color: #111;
+      padding: 10px;
+      color: #00FFFF;
       z-index: 1000;
     }
+    header h2 {
+      margin: 0;
+    }
     nav {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: center;
       background-color: #111;
-      padding: 20px;
-      width: 100%;
-      z-index: 999;
+      padding: 10px 0;
+      z-index: 1000;
     }
     nav a {
       color: #00FFFF;
@@ -48,12 +52,9 @@
       background-color: #222;
     }
     section {
-      display: none;
-      padding: 50px;
+      padding: 100px 20px;
       text-align: center;
-    }
-    section.active {
-      display: block;
+      min-height: 100vh;
     }
     h1 {
       text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
@@ -120,13 +121,10 @@
     }
   </style>
   <script>
-    function showSection(id) {
-      // Hide all sections
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
-
-      // Show the selected section
-      document.getElementById(id).classList.add('active');
+    function scrollToSection(id) {
+      // Smooth scroll to the section
+      const section = document.getElementById(id);
+      section.scrollIntoView({ behavior: 'smooth' });
     }
 
     function typeEffect(element, text, delay = 100) {
@@ -164,12 +162,12 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
-    <a href="#" onclick="showSection('projects')">Projects</a>
-    <a href="#" onclick="showSection('experience')">Experience</a>
-    <a href="#" onclick="showSection('certs')">Certifications</a>
-    <a href="#" onclick="showSection('skills')">Skills</a>
-    <a href="#" onclick="showSection('education')">Education</a>
+    <a href="#" onclick="scrollToSection('whoami'); loadWhoamiContent();">Whoami</a>
+    <a href="#" onclick="scrollToSection('projects')">Projects</a>
+    <a href="#" onclick="scrollToSection('experience')">Experience</a>
+    <a href="#" onclick="scrollToSection('certs')">Certifications</a>
+    <a href="#" onclick="scrollToSection('skills')">Skills</a>
+    <a href="#" onclick="scrollToSection('education')">Education</a>
   </nav>
 
   <section id="whoami">
@@ -229,3 +227,4 @@
   </section>
 </body>
 </html>
+
