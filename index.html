@@ -70,28 +70,6 @@
       color: #000;
     }
 
-    /* Mobile menu styles */
-    .mobile-nav {
-      display: none;
-    }
-
-    .mobile-nav a {
-      color: #00FFFF;
-      text-decoration: none;
-      margin: 10px 0;
-      font-size: 18px;
-      padding: 10px;
-      display: block;
-      border: 1px solid transparent;
-      transition: all 0.3s;
-      background-color: #111;
-    }
-
-    .mobile-nav a:hover {
-      background-color: #00FFFF;
-      color: #000;
-    }
-
     section {
       padding: 100px 20px;
       text-align: center;
@@ -145,31 +123,63 @@
     }
 
     @media (max-width: 600px) {
-      nav {
-        display: none;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .mobile-nav {
-        display: block;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
+      nav {
+        display: none; /* Hide the original nav links */
+        position: absolute;
+        top: 60px;
+        right: 20px;
         background-color: #111;
+        width: 200px;
+        border-radius: 5px;
+        z-index: 999;
         padding: 10px;
-        z-index: 1001;
+        box-shadow: 0 0 15px #00FF00;
+      }
+
+      nav a {
+        padding: 10px;
+        font-size: 18px;
+        margin: 0;
       }
 
       .header-links {
-        flex-direction: column;
-        align-items: center;
+        display: none; /* Hide header links */
       }
 
-      .header-links a {
-        font-size: 14px;
-        margin: 5px 0;
-        padding: 8px;
-        width: 100%;
+      .header-links-mobile {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #111;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 1000;
+        box-shadow: 0 0 15px #00FF00;
+      }
+
+      .header-links-mobile a {
+        margin: 0 10px;
+        font-size: 16px;
+        color: #00FFFF;
+        text-decoration: none;
+      }
+
+      .header-links-mobile a:hover {
+        background-color: #00FFFF;
+        color: #000;
+      }
+
+      #menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
       }
 
       .whoami-content {
@@ -206,6 +216,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -219,6 +230,12 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
+      });
+
+      // Toggle menu visibility on mobile
+      document.getElementById('menu-toggle').addEventListener('click', () => {
+        const nav = document.querySelector('nav');
+        nav.style.display = nav.style.display === 'none' || nav.style.display === '' ? 'block' : 'none';
       });
     });
 
@@ -245,6 +262,7 @@
 <body>
   <header>
     <h2>Sasanka Nimes</h2>
+    <div id="menu-toggle">☰</div>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -254,13 +272,16 @@
       <a href="#education">Education</a>
     </nav>
     <div class="header-links">
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
   </header>
 
-  <!-- Mobile Navigation -->
-  <div class="mobile-nav">
+  <!-- Mobile Links -->
+  <div class="header-links-mobile">
     <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
     <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
   </div>
 
@@ -275,8 +296,7 @@
       <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
     </div>
   </section>
-
-  <section id="projects">
+    <section id="projects">
     <h1>Projects</h1>
     <p>Here are some of the projects I've worked on:</p>
     <ul>
@@ -319,6 +339,9 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
+
+  <!-- Other sections (projects, experience, certifications, skills, education) remain unchanged -->
+
 </body>
 </html>
 
