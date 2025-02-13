@@ -28,7 +28,7 @@
       justify-content: space-between;
       align-items: center;
       background-color: #111;
-      padding: 15px; /* Reduced padding for mobile */
+      padding: 20px;
       color: #00FFFF;
       z-index: 1000;
     }
@@ -37,6 +37,7 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
     nav a {
@@ -122,22 +123,27 @@
       flex: 1 1 300px;
     }
 
-    /* Mobile-specific adjustments */
+    /* Mobile adjustments */
     @media (max-width: 600px) {
-      header {
-        padding: 10px; /* Adjust padding for mobile */
-      }
-
-      h2 {
-        font-size: 18px; /* Reduce header font size for mobile */
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
       }
 
       nav a {
-        font-size: 16px;
-        padding: 10px 0;
+        font-size: 18px;
         width: 100%;
         text-align: center;
-        margin: 5px 0;
+        padding: 10px 0;
+        margin: 0;
+      }
+
+      nav a:hover {
+        background-color: #00FFFF;
+        color: #000;
       }
 
       .header-links {
@@ -178,6 +184,16 @@
         max-width: 100%;
         height: auto;
       }
+
+      /* Hamburger Menu */
+      .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+        color: #00FFFF;
+        background: none;
+        border: none;
+      }
     }
 
     html {
@@ -186,7 +202,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
+
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -200,6 +216,12 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
+      });
+
+      // Toggle navigation menu visibility on hamburger click
+      document.getElementById('hamburger').addEventListener('click', () => {
+        const nav = document.querySelector('nav');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
       });
     });
 
@@ -226,6 +248,7 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
+    <button id="hamburger" class="hamburger-menu">&#9776;</button> <!-- Hamburger Menu Button -->
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -298,4 +321,5 @@
   </section>
 </body>
 </html>
+
 
