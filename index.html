@@ -12,6 +12,7 @@
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 0;
+      scroll-behavior: smooth; /* Added smooth scrolling */
     }
     header {
       display: flex;
@@ -42,9 +43,9 @@
       background-color: #222;
     }
     section {
-      display: none;
       padding: 50px;
       text-align: center;
+      min-height: 100vh; /* Ensures sections take up full height */
     }
     section.active {
       display: block;
@@ -128,12 +129,12 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('whoami')">Whoami</a>
-    <a href="#" onclick="showSection('projects')">Projects</a>
-    <a href="#" onclick="showSection('experience')">Experience</a>
-    <a href="#" onclick="showSection('certs')">Certifications</a>
-    <a href="#" onclick="showSection('skills')">Skills</a>
-    <a href="#" onclick="showSection('education')">Education</a>
+    <a href="#whoami" onclick="showSection('whoami')">Whoami</a>
+    <a href="#projects" onclick="showSection('projects')">Projects</a>
+    <a href="#experience" onclick="showSection('experience')">Experience</a>
+    <a href="#certs" onclick="showSection('certs')">Certifications</a>
+    <a href="#skills" onclick="showSection('skills')">Skills</a>
+    <a href="#education" onclick="showSection('education')">Education</a>
   </nav>
 
   <section id="whoami" class="active">
@@ -185,4 +186,5 @@
   </section>
 </body>
 </html>
+
 
