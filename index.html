@@ -9,236 +9,40 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Existing styles */
-    body {
-      background-color: #000;
-      color: #00FF00;
-      font-family: 'Share Tech Mono', monospace;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #111;
-      padding: 20px;
-      color: #00FFFF;
-      z-index: 1000;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    nav a {
-      color: #00FFFF;
-      text-decoration: none;
-      margin: 0 15px;
-      font-size: 20px;
-      padding: 5px 10px;
-      border: 1px solid transparent;
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      border-color: #00FFFF;
-      background-color: #222;
-    }
-
-    .header-links a {
-      color: #00FFFF;
-      text-decoration: none;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.3s;
-    }
-
-    .header-links a:hover {
-      color: #000;
-      background-color: #00FFFF;
-      padding: 8px 12px;
-      border-radius: 5px;
-    }
-
-    .resume-link {
-      background-color: #222;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-size: 18px;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid #00FFFF;
-    }
-
-    .resume-link:hover {
-      background-color: #00FFFF;
-      color: #000;
-    }
-
-    .download-icon {
-      font-size: 20px;
-    }
-
-    .social-link .social-icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    section {
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    h1 {
-      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .whoami-content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .cmd-simulation {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px #00FF00;
-      text-align: left;
-      font-size: 18px;
-      white-space: pre-wrap;
-      line-height: 1.5;
-      color: #00FF00;
-      flex: 1 1 300px;
-    }
-
-    #whoami-photo {
-      border: 3px solid #00FFFF;
-      border-radius: 10px;
-      width: 300px;
-      height: auto;
-      flex: 1 1 300px;
-    }
-
-    #whoami-video {
-      border: 3px solid #00FFFF;
-      border-radius: 10px;
-      width: 300px;
-      height: auto;
-      flex: 1 1 300px;
-    }
-
-    @media (max-width: 600px) {
-      nav a {
-        font-size: 16px;
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
-      }
-
-      .header-links {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .header-links a {
-        font-size: 14px;
-        margin: 5px 0;
-        padding: 8px;
-        width: 100%;
-      }
-
-      .whoami-content {
-        flex-direction: column;
-      }
-
-      #whoami-photo, #whoami-video {
-        width: 100%;
-        max-width: 300px;
-      }
-
-      section {
-        padding: 50px 10px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      p, ul {
-        font-size: 16px;
-        padding: 0 10px;
-      }
-
-      img, video {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    /* Body and header styles */
+    body { background-color: #000; color: #00FF00; font-family: 'Share Tech Mono', monospace; margin: 0; padding: 0; overflow-x: hidden; }
+    header { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; background-color: #111; padding: 20px; color: #00FFFF; z-index: 1000; }
+    nav { display: flex; justify-content: center; flex-wrap: wrap; }
+    nav a { color: #00FFFF; text-decoration: none; margin: 0 15px; font-size: 20px; padding: 5px 10px; border: 1px solid transparent; transition: all 0.3s; cursor: pointer; }
+    nav a:hover { border-color: #00FFFF; background-color: #222; }
+    .header-links a { color: #00FFFF; text-decoration: none; font-size: 16px; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+    .header-links a:hover { color: #000; background-color: #00FFFF; padding: 8px 12px; border-radius: 5px; }
+    .resume-link { background-color: #222; padding: 10px 20px; border-radius: 5px; font-size: 18px; font-weight: bold; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #00FFFF; }
+    .resume-link:hover { background-color: #00FFFF; color: #000; }
+    .download-icon { font-size: 20px; }
+    .social-link .social-icon { width: 20px; height: 20px; }
+    /* Section styles */
+    section { padding: 100px 20px; text-align: center; }
+    h1 { text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00; margin-bottom: 30px; }
+    p { font-size: 18px; line-height: 1.6; }
+    .whoami-content { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 20px; }
+    .cmd-simulation { background-color: #111; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px #00FF00; text-align: left; font-size: 18px; white-space: pre-wrap; line-height: 1.5; color: #00FF00; flex: 1 1 300px; }
+    #whoami-photo { border: 3px solid #00FFFF; border-radius: 10px; width: 300px; height: auto; flex: 1 1 300px; }
+    #whoami-video { border: 3px solid #00FFFF; border-radius: 10px; width: 300px; height: auto; flex: 1 1 300px; }
+    /* Responsive design */
+    @media (max-width: 600px) { nav a { font-size: 16px; padding: 10px 0; width: 100%; text-align: center; } .header-links { flex-direction: column; align-items: center; } .header-links a { font-size: 14px; margin: 5px 0; padding: 8px; width: 100%; } .whoami-content { flex-direction: column; } #whoami-photo, #whoami-video { width: 100%; max-width: 300px; } section { padding: 50px 10px; } h1 { font-size: 24px; } p, ul { font-size: 16px; padding: 0 10px; } img, video { max-width: 100%; height: auto; } }
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
-      window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
-      window.scrollTo(0, 0);
-
-      // Initialize the "whoami" section CMD simulation
+      window.history.scrollRestoration = 'manual'; window.scrollTo(0, 0);
       loadWhoamiContent();
-
-      // Set up smooth scrolling for all nav links without updating the URL
-      document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const sectionId = this.getAttribute('href').substring(1);
-          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        });
-      });
+      document.querySelectorAll('nav a').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const sectionId = this.getAttribute('href').substring(1); document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }); });
     });
 
-    function typeEffect(element, text, delay = 100) {
-      let index = 0;
-      function type() {
-        if (index < text.length) {
-          element.textContent += text[index];
-          index++;
-          setTimeout(type, delay);
-        }
-      }
-      type();
-    }
-
-    function loadWhoamiContent() {
-      const cmdOutput = document.getElementById('cmd-output');
-      const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
-      cmdOutput.textContent = ""; // Reset text
-      typeEffect(cmdOutput, outputText, 80); // Type the effect
-    }
+    function typeEffect(element, text, delay = 100) { let index = 0; function type() { if (index < text.length) { element.textContent += text[index]; index++; setTimeout(type, delay); } } type(); }
+    function loadWhoamiContent() { const cmdOutput = document.getElementById('cmd-output'); const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n"; cmdOutput.textContent = ""; typeEffect(cmdOutput, outputText, 80); }
   </script>
 </head>
 <body>
@@ -253,15 +57,12 @@
       <a href="#education">Education</a>
     </nav>
     <div class="header-links">
-      <!-- Download Resume with a new look -->
       <a href="resume.pdf" download="My_Resume.pdf" class="resume-link">
         <span class="download-icon">📥</span> Download Resume
       </a>
-      <!-- LinkedIn icon with name -->
       <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="social-link">
         <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo_2013.png" alt="LinkedIn Icon" class="social-icon"> LinkedIn
       </a>
-      <!-- TryHackMe icon with name -->
       <a href="https://tryhackme.com/p/your-username" target="_blank" class="social-link">
         <img src="https://tryhackme.com/assets/logo_black-03cbf50f.png" alt="TryHackMe Icon" class="social-icon"> TryHackMe
       </a>
@@ -325,4 +126,5 @@
   </section>
 </body>
 </html>
+
 
