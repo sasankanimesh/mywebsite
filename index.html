@@ -7,50 +7,69 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Share Tech Mono', monospace;
       background-color: #000;
       color: #00FF00;
+      font-family: 'Share Tech Mono', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
+
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 0 10px #00FF00;
+      z-index: 1000;
     }
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-      text-shadow: 0 0 10px #00FF00;
-    }
+
     nav {
-      text-align: center;
-      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+
     nav a {
       color: #00FFFF;
       text-decoration: none;
       margin: 0 15px;
-      font-size: 18px;
-      padding: 10px;
+      font-size: 20px;
+      padding: 5px 10px;
       border: 1px solid transparent;
       transition: all 0.3s;
     }
+
     nav a:hover {
       border-color: #00FFFF;
       background-color: #222;
     }
+
     section {
-      display: none;
-      padding: 50px;
+      padding: 100px 20px;
       text-align: center;
+      display: none;
     }
+
     section.active {
       display: block;
     }
+
+    h1 {
+      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
     .header-links a {
       color: #00FFFF;
       text-decoration: none;
@@ -60,10 +79,12 @@
       padding: 5px 10px;
       transition: all 0.3s;
     }
+
     .header-links a:hover {
       background-color: #00FFFF;
       color: #000;
     }
+
     .whoami-content {
       display: flex;
       flex-wrap: wrap;
@@ -71,6 +92,7 @@
       align-items: flex-start;
       gap: 20px;
     }
+
     .cmd-simulation {
       background-color: #111;
       padding: 20px;
@@ -83,6 +105,7 @@
       color: #00FF00;
       flex: 1 1 300px;
     }
+
     #whoami-photo {
       border: 3px solid #00FFFF;
       border-radius: 10px;
@@ -90,6 +113,7 @@
       height: auto;
       flex: 1 1 300px;
     }
+
     #whoami-video {
       border: 3px solid #00FFFF;
       border-radius: 10px;
@@ -97,23 +121,27 @@
       height: auto;
       flex: 1 1 300px;
     }
+
     @media (max-width: 600px) {
       nav a {
         font-size: 16px;
         padding: 5px;
       }
+
       .whoami-content {
         flex-direction: column;
       }
     }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
   </style>
   <script>
     function showSection(id) {
-      // Hide all sections
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
-
-      // Show the selected section
       document.getElementById(id).classList.add('active');
     }
 
@@ -132,39 +160,28 @@
     function loadWhoamiContent() {
       const cmdOutput = document.getElementById('cmd-output');
       const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
-      
-      // Clear the content to prevent duplicate text
       cmdOutput.textContent = "";
-      
-      // Start typing effect
       typeEffect(cmdOutput, outputText, 80);
-    }
-
-    window.onload = function() {
-      // Set the 'Whoami' section as active by default
-      showSection('whoami');
-      loadWhoamiContent();
     }
   </script>
 </head>
 <body>
   <header>
-    <h1>My Hacker-Themed Website</h1>
+    <h2>My Hacker-Themed Website</h2>
     <div class="header-links">
       <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
       <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
+    <nav>
+      <a href="#whoami" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
+      <a href="#projects" onclick="showSection('projects')">Projects</a>
+      <a href="#experience" onclick="showSection('experience')">Experience</a>
+      <a href="#certs" onclick="showSection('certs')">Certifications</a>
+      <a href="#skills" onclick="showSection('skills')">Skills</a>
+      <a href="#education" onclick="showSection('education')">Education</a>
+    </nav>
   </header>
-
-  <nav>
-    <a href="javascript:void(0);" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
-    <a href="javascript:void(0);" onclick="showSection('projects')">Projects</a>
-    <a href="javascript:void(0);" onclick="showSection('experience')">Experience</a>
-    <a href="javascript:void(0);" onclick="showSection('certs')">Certifications</a>
-    <a href="javascript:void(0);" onclick="showSection('skills')">Skills</a>
-    <a href="javascript:void(0);" onclick="showSection('education')">Education</a>
-  </nav>
 
   <section id="whoami">
     <h1>Whoami</h1>
