@@ -139,8 +139,10 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Always scroll to the top (Whoami section) when the page is first loaded
-      window.scrollTo(0, 0);
+      
+      window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
+window.scrollTo(0, 0);
+
 
       // Initialize the "whoami" section CMD simulation
       loadWhoamiContent();
@@ -154,6 +156,7 @@
         });
       });
     });
+
 
     function typeEffect(element, text, delay = 100) {
       let index = 0;
