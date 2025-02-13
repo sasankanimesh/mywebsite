@@ -24,6 +24,7 @@
     nav {
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       background-color: #111;
       padding: 20px;
     }
@@ -69,6 +70,13 @@
       background-color: #00FFFF;
       color: #000;
     }
+    .whoami-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
     .cmd-simulation {
       background-color: #111;
       padding: 20px;
@@ -79,13 +87,30 @@
       white-space: pre-wrap;
       line-height: 1.5;
       color: #00FF00;
+      flex: 1 1 300px;
     }
     #whoami-photo {
-      margin-top: 20px;
       border: 3px solid #00FFFF;
       border-radius: 10px;
       width: 300px;
       height: auto;
+      flex: 1 1 300px;
+    }
+    #whoami-video {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 16px;
+        padding: 5px;
+      }
+      .whoami-content {
+        flex-direction: column;
+      }
     }
   </style>
   <script>
@@ -97,9 +122,6 @@
       // Show the selected section
       document.getElementById(id).classList.add('active');
     }
-
-    // Show "Whoami" by default on page load
-    window.onload = () => showSection('whoami');
 
     function typeEffect(element, text, delay = 100) {
       let index = 0;
@@ -113,7 +135,7 @@
       type();
     }
 
-    window.onload = function() {
+    function loadWhoamiContent() {
       const cmdOutput = document.getElementById('cmd-output');
       const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
       typeEffect(cmdOutput, outputText, 80);
@@ -131,7 +153,7 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('whoami')">Whoami</a>
+    <a href="#" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
     <a href="#" onclick="showSection('projects')">Projects</a>
     <a href="#" onclick="showSection('experience')">Experience</a>
     <a href="#" onclick="showSection('certs')">Certifications</a>
@@ -141,8 +163,14 @@
 
   <section id="whoami">
     <h1>Whoami</h1>
-    <div class="cmd-simulation" id="cmd-output"></div>
-    <img id="whoami-photo" src="your-photo.jpg" alt="My Photo">
+    <div class="whoami-content">
+      <div class="cmd-simulation" id="cmd-output"></div>
+      <img id="whoami-photo" src="your-photo.jpg" alt="My Photo">
+      <video id="whoami-video" controls>
+        <source src="your-introduction-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </section>
 
   <section id="projects">
