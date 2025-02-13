@@ -122,55 +122,53 @@
       flex: 1 1 300px;
     }
 
+    /* Mobile view styles */
     @media (max-width: 600px) {
       header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
       }
 
       nav {
-        display: none; /* Hide the navigation links on mobile */
-      }
-
-      .menu-button {
-        display: block;
-        background-color: #00FF00;
-        color: #000;
-        padding: 10px;
-        cursor: pointer;
-        border: none;
-      }
-
-      .mobile-nav {
-        display: block;
-        background-color: #111;
-        position: fixed;
-        bottom: 0;
-        left: 0;
         width: 100%;
-        padding: 10px;
-        text-align: center;
-        z-index: 999;
+        justify-content: space-around;
+        margin-top: 15px;
       }
 
-      .mobile-nav a {
-        color: #00FFFF;
-        text-decoration: none;
-        padding: 5px 10px;
-        margin: 0 5px;
+      nav a {
         font-size: 16px;
-        border: 1px solid #00FFFF;
-        transition: all 0.3s;
-      }
-
-      .mobile-nav a:hover {
-        background-color: #00FFFF;
-        color: #000;
+        padding: 8px 15px;
+        width: 100%;
+        text-align: center;
       }
 
       .header-links {
-        display: none;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .header-links a {
+        font-size: 14px;
+        padding: 8px;
+        width: 100%;
+      }
+
+      .whoami-content {
+        flex-direction: column;
+      }
+
+      #whoami-photo, #whoami-video {
+        width: 100%;
+        max-width: 300px;
       }
 
       section {
@@ -190,15 +188,6 @@
         max-width: 100%;
         height: auto;
       }
-
-      .whoami-content {
-        flex-direction: column;
-      }
-
-      #whoami-photo, #whoami-video {
-        width: 100%;
-        max-width: 300px;
-      }
     }
 
     html {
@@ -207,6 +196,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -220,12 +210,6 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
-      });
-
-      // Toggle mobile navigation menu
-      document.querySelector('.menu-button').addEventListener('click', () => {
-        const mobileNav = document.querySelector('.mobile-nav');
-        mobileNav.classList.toggle('open');
       });
     });
 
@@ -252,20 +236,21 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
-    <button class="menu-button">☰</button>
+    <!-- Navigation for Mobile -->
+    <nav>
+      <a href="#whoami">Whoami</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+    <div class="header-links">
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+    </div>
   </header>
-
-  <div class="mobile-nav">
-    <a href="#whoami">Whoami</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#certs">Certifications</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-  </div>
 
   <section id="whoami">
     <h1>Whoami</h1>
@@ -324,4 +309,5 @@
   </section>
 </body>
 </html>
+
 
