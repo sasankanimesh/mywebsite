@@ -139,10 +139,27 @@
 
   </style>
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Activate the 'Whoami' section by default
+      showSection('whoami');
+
+      // Event listener for smooth scrolling navigation
+      const links = document.querySelectorAll('nav a');
+      links.forEach(link => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const targetId = event.target.getAttribute('href').substring(1);
+          showSection(targetId);
+          window.location.hash = targetId; // Update URL hash
+        });
+      });
+    });
+
     function showSection(id) {
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+      const section = document.getElementById(id);
+      if (section) section.classList.add('active');
     }
 
     function typeEffect(element, text, delay = 100) {
@@ -168,7 +185,7 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
-        <nav>
+    <nav>
       <a href="#whoami" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
       <a href="#projects" onclick="showSection('projects')">Projects</a>
       <a href="#experience" onclick="showSection('experience')">Experience</a>
@@ -183,7 +200,7 @@
     </div>
   </header>
 
-  <section id="whoami">
+  <section id="whoami" class="active">
     <h1>Whoami</h1>
     <div class="whoami-content">
       <div class="cmd-simulation" id="cmd-output"></div>
