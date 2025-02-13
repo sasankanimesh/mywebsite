@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Hacker-Themed Personal Website</title>
+  <title>Sasanka Nimes</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     /* Existing styles */
@@ -31,10 +31,6 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
-    }
-
-    header h2 {
-      margin: 0;
     }
 
     nav {
@@ -127,15 +123,16 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        padding: 10px;
+      nav a {
+        font-size: 16px;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
       }
 
       .header-links {
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
       }
 
       .header-links a {
@@ -143,39 +140,6 @@
         margin: 5px 0;
         padding: 8px;
         width: 100%;
-      }
-
-      nav {
-        display: none;
-        width: 100%;
-        text-align: center;
-        flex-direction: column;
-        background-color: #111;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      nav a {
-        font-size: 16px;
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-      }
-
-      .hamburger {
-        display: block;
-        cursor: pointer;
-      }
-
-      .hamburger span {
-        display: block;
-        background-color: #00FFFF;
-        height: 4px;
-        width: 30px;
-        margin: 6px 0;
-        transition: 0.4s;
       }
 
       .whoami-content {
@@ -212,6 +176,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -225,11 +190,6 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
-      });
-
-      // Toggle nav menu on hamburger click
-      document.querySelector('.hamburger').addEventListener('click', () => {
-        document.querySelector('nav').classList.toggle('active');
       });
     });
 
@@ -256,11 +216,6 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -268,10 +223,12 @@
       <a href="#certs">Certifications</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
+    </nav>
+    <div class="header-links">
       <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
       <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-    </nav>
+    </div>
   </header>
 
   <section id="whoami">
