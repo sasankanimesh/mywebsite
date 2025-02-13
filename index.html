@@ -11,7 +11,7 @@
       color: #00FF00;
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
-      padding: 0;
+      padding-top: 120px; /* Add padding to the top to avoid content being hidden by the fixed header/nav */
     }
     header {
       display: flex;
@@ -20,7 +20,11 @@
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
-      position: fixed;
+      position: fixed; /* Fix the header at the top */
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000; /* Ensure the header is above other content */
     }
     nav {
       display: flex;
@@ -28,7 +32,10 @@
       flex-wrap: wrap;
       background-color: #111;
       padding: 20px;
-      position: fixed;
+      position: fixed; /* Fix the nav bar at the top */
+      top: 60px; /* Adjust this value to prevent overlap with the header */
+      width: 100%;
+      z-index: 999; /* Slightly lower than the header */
     }
     nav a {
       color: #00FFFF;
