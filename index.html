@@ -9,7 +9,6 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -31,6 +30,21 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
+    }
+
+    .menu-btn {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      justify-content: space-around;
+      height: 30px;
+      width: 30px;
+    }
+
+    .menu-btn div {
+      background-color: #00FFFF;
+      height: 4px;
+      width: 30px;
     }
 
     nav {
@@ -57,15 +71,15 @@
 
     .header-links {
       display: flex;
-      gap: 10px;
     }
 
     .header-links a {
       color: #00FFFF;
       text-decoration: none;
+      margin: 0 10px;
       font-size: 16px;
-      padding: 5px 10px;
       border: 1px solid #00FFFF;
+      padding: 5px 10px;
       transition: all 0.3s;
     }
 
@@ -127,22 +141,6 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      header h2 {
-        font-size: 20px;
-      }
-
-      nav {
-        width: 100%;
-        justify-content: center;
-        margin-top: 10px;
-      }
-
       nav a {
         font-size: 16px;
         padding: 10px 0;
@@ -151,9 +149,9 @@
       }
 
       .header-links {
+        display: none;
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
       }
 
       .header-links a {
@@ -189,6 +187,23 @@
         max-width: 100%;
         height: auto;
       }
+
+      .menu-btn {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: #111;
+      }
+
+      nav a {
+        font-size: 18px;
+        padding: 10px;
+      }
     }
 
     html {
@@ -197,7 +212,6 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -213,11 +227,10 @@
         });
       });
 
-      // Button click actions to scroll to the top
-      document.querySelectorAll('.header-links a').forEach(button => {
-        button.addEventListener('click', () => {
-          window.scrollTo(0, 0);
-        });
+      // Toggle nav menu on hamburger click
+      document.querySelector('.menu-btn').addEventListener('click', () => {
+        const nav = document.querySelector('nav');
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
       });
     });
 
@@ -244,6 +257,11 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
+    <div class="menu-btn">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -316,4 +334,5 @@
   </section>
 </body>
 </html>
+
 
