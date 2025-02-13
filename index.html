@@ -6,10 +6,9 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Personal Website</title>
+  <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -31,6 +30,10 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
+    }
+
+    header h2 {
+      margin-left: 10px;
     }
 
     nav {
@@ -123,74 +126,64 @@
     }
 
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
       nav {
-        display: none; /* Hide the original nav links */
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        background-color: #111;
-        width: 200px;
-        border-radius: 5px;
-        z-index: 999;
-        padding: 10px;
-        box-shadow: 0 0 15px #00FF00;
+        display: none; /* Hide default navigation */
       }
 
-      nav a {
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #111;
+        padding: 15px;
+        justify-content: space-between;
+      }
+
+      /* Mobile Menu Bar */
+      .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111;
+        color: #00FFFF;
         padding: 10px;
-        font-size: 18px;
+        z-index: 100;
+        font-size: 14px;
+        text-align: center;
+        gap: 10px;
+      }
+
+      .mobile-menu a {
+        color: #00FFFF;
+        text-decoration: none;
         margin: 0;
+        padding: 5px;
+        font-size: 14px;
+      }
+
+      .mobile-menu a:hover {
+        border-color: #00FFFF;
+        background-color: #222;
+      }
+
+      .menu-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+        color: #00FFFF;
       }
 
       .header-links {
-        display: none; /* Hide header links */
+        display: none; /* Hide header links for mobile */
       }
 
-      .header-links-mobile {
-        display: block;
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #111;
-        padding: 10px;
-        border-radius: 5px;
-        z-index: 1000;
-        box-shadow: 0 0 15px #00FF00;
-      }
-
-      .header-links-mobile a {
-        margin: 0 10px;
-        font-size: 16px;
-        color: #00FFFF;
-        text-decoration: none;
-      }
-
-      .header-links-mobile a:hover {
-        background-color: #00FFFF;
-        color: #000;
-      }
-
-      #menu-toggle {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-      }
-
-      .whoami-content {
-        flex-direction: column;
-      }
-
-      #whoami-photo, #whoami-video {
-        width: 100%;
-        max-width: 300px;
-      }
-
+      /* Adjust sections for mobile */
       section {
         padding: 50px 10px;
       }
@@ -232,10 +225,10 @@
         });
       });
 
-      // Toggle menu visibility on mobile
+      // Mobile menu toggle
       document.getElementById('menu-toggle').addEventListener('click', () => {
-        const nav = document.querySelector('nav');
-        nav.style.display = nav.style.display === 'none' || nav.style.display === '' ? 'block' : 'none';
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('show');
       });
     });
 
@@ -261,16 +254,10 @@
 </head>
 <body>
   <header>
-    <h2>Sasanka Nimes</h2>
-    <div id="menu-toggle">☰</div>
-    <nav>
-      <a href="#whoami">Whoami</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-    </nav>
+    <h2>My Hacker-Themed Website</h2>
+    <div class="menu-toggle" id="menu-toggle">
+      ☰
+    </div>
     <div class="header-links">
       <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
@@ -278,11 +265,14 @@
     </div>
   </header>
 
-  <!-- Mobile Links -->
-  <div class="header-links-mobile">
-    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#whoami">Whoami</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
   </div>
 
   <section id="whoami">
@@ -296,15 +286,8 @@
       <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
     </div>
   </section>
-    <section id="projects">
-    <h1>Projects</h1>
-    <p>Here are some of the projects I've worked on:</p>
-    <ul>
-      <li>Penetration Testing Tool (Web App + Automation)</li>
-      <li>IoT-Based Indoor Navigation System</li>
-      <li>Healthcare Mobile Application (React Native)</li>
-    </ul>
-  </section>
+
+
 
   <section id="experience">
     <h1>Experience</h1>
