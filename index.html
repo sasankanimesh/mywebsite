@@ -9,7 +9,7 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Global styles */
+    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -31,17 +31,11 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
-      flex-wrap: wrap;
-    }
-
-    h2 {
-      font-size: 1.5rem;
     }
 
     nav {
       display: flex;
-      justify-content: space-between;
-      width: 100%;
+      justify-content: center;
       flex-wrap: wrap;
     }
 
@@ -49,7 +43,7 @@
       color: #00FFFF;
       text-decoration: none;
       margin: 0 15px;
-      font-size: 1.2rem;
+      font-size: 20px;
       padding: 5px 10px;
       border: 1px solid transparent;
       transition: all 0.3s;
@@ -64,8 +58,9 @@
     .header-links a {
       color: #00FFFF;
       text-decoration: none;
-      margin: 5px;
-      font-size: 14px;
+      margin: 0 10px;
+      font-size: 16px;
+      border: 1px solid #00FFFF;
       padding: 5px 10px;
       transition: all 0.3s;
     }
@@ -83,21 +78,19 @@
     h1 {
       text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
       margin-bottom: 30px;
-      font-size: 2.5rem;
     }
 
     p {
       font-size: 18px;
       line-height: 1.6;
-      padding: 0 20px;
     }
 
     .whoami-content {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-around;
+      justify-content: center;
+      align-items: flex-start;
       gap: 20px;
-      margin-top: 20px;
     }
 
     .cmd-simulation {
@@ -111,99 +104,88 @@
       line-height: 1.5;
       color: #00FF00;
       flex: 1 1 300px;
-      max-width: 450px;
     }
 
-    #whoami-photo, #whoami-video {
+    #whoami-photo {
       border: 3px solid #00FFFF;
       border-radius: 10px;
-      width: 100%;
-      max-width: 350px;
+      width: 300px;
       height: auto;
       flex: 1 1 300px;
     }
 
-    /* Mobile-first responsive styles */
-    @media (max-width: 768px) {
+    #whoami-video {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
       nav a {
-        font-size: 1rem;
-        padding: 12px 0;
+        font-size: 16px;
+        padding: 10px 0;
         width: 100%;
         text-align: center;
       }
 
       .header-links {
-        display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 15px;
       }
 
       .header-links a {
-        font-size: 16px;
-        padding: 12px;
+        font-size: 14px;
+        margin: 5px 0;
+        padding: 8px;
         width: 100%;
-        text-align: center;
       }
 
       .whoami-content {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .cmd-simulation {
-        font-size: 16px;
-        max-width: 90%;
       }
 
       #whoami-photo, #whoami-video {
-        max-width: 100%;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      p, ul {
-        font-size: 16px;
-        padding: 0 10px;
+        width: 100%;
+        max-width: 300px;
       }
 
       section {
-        padding: 50px 15px;
+        padding: 50px 10px;
       }
-    }
 
-    @media (max-width: 480px) {
       h1 {
-        font-size: 1.5rem;
-      }
-
-      nav a {
-        font-size: 1rem;
-      }
-
-      .header-links a {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 24px;
       }
 
       p, ul {
-        font-size: 14px;
+        font-size: 16px;
         padding: 0 10px;
       }
 
-      .whoami-content {
-        gap: 15px;
+      img, video {
+        max-width: 100%;
+        height: auto;
       }
 
-      .cmd-simulation {
-        font-size: 14px;
-      }
-
-      #whoami-photo, #whoami-video {
-        max-width: 90%;
+      .menu-btn {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        color: #00FFFF;
+        background: transparent;
+        border: none;
       }
     }
 
@@ -213,17 +195,27 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      window.history.scrollRestoration = 'manual';
+      window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
+      // Initialize the "whoami" section CMD simulation
       loadWhoamiContent();
 
+      // Set up smooth scrolling for all nav links without updating the URL
       document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
+      });
+
+      // Toggle the navigation menu for mobile view
+      const menuBtn = document.getElementById('menu-btn');
+      const nav = document.querySelector('nav');
+      
+      menuBtn.addEventListener('click', () => {
+        nav.classList.toggle('active');
       });
     });
 
@@ -242,14 +234,15 @@
     function loadWhoamiContent() {
       const cmdOutput = document.getElementById('cmd-output');
       const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
-      cmdOutput.textContent = "";
-      typeEffect(cmdOutput, outputText, 80);
+      cmdOutput.textContent = ""; // Reset text
+      typeEffect(cmdOutput, outputText, 80); // Type the effect
     }
   </script>
 </head>
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
+    <button id="menu-btn" class="menu-btn">&#9776;</button>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -322,5 +315,3 @@
   </section>
 </body>
 </html>
-
-
