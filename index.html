@@ -9,6 +9,7 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -32,21 +33,6 @@
       z-index: 1000;
     }
 
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      justify-content: space-around;
-      height: 30px;
-      width: 30px;
-    }
-
-    .menu-btn div {
-      background-color: #00FFFF;
-      height: 4px;
-      width: 30px;
-    }
-
     nav {
       display: flex;
       justify-content: center;
@@ -67,10 +53,6 @@
     nav a:hover {
       border-color: #00FFFF;
       background-color: #222;
-    }
-
-    .header-links {
-      display: flex;
     }
 
     .header-links a {
@@ -140,25 +122,33 @@
       flex: 1 1 300px;
     }
 
+    /* Mobile view updates */
     @media (max-width: 600px) {
-      nav a {
-        font-size: 16px;
-        padding: 10px 0;
-        width: 100%;
-        text-align: center;
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+      }
+
+      nav {
+        display: none;
       }
 
       .header-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 0;
+        background-color: #111;
+        padding: 10px;
       }
 
       .header-links a {
         font-size: 14px;
-        margin: 5px 0;
-        padding: 8px;
-        width: 100%;
+        width: 33%;
+        text-align: center;
+        padding: 10px;
       }
 
       .whoami-content {
@@ -187,37 +177,6 @@
         max-width: 100%;
         height: auto;
       }
-
-      .menu-btn {
-        display: flex;
-      }
-
-      nav {
-        display: none;
-        width: 250px;
-        position: fixed;
-        top: 0;
-        right: -250px;
-        height: 100%;
-        background-color: #111;
-        flex-direction: column;
-        align-items: center;
-        padding-top: 80px;
-        transition: all 0.3s ease;
-        z-index: 100;
-      }
-
-      nav a {
-        font-size: 18px;
-        padding: 10px;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid #00FFFF;
-      }
-
-      nav.show {
-        right: 0;
-      }
     }
 
     html {
@@ -239,12 +198,6 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
-      });
-
-      // Toggle nav menu on hamburger click
-      document.querySelector('.menu-btn').addEventListener('click', () => {
-        const nav = document.querySelector('nav');
-        nav.classList.toggle('show');
       });
     });
 
@@ -270,27 +223,21 @@
 </head>
 <body>
   <header>
-    <h2>Logo</h2>
-    <div class="menu-btn">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+    <h2>My Hacker-Themed Website</h2>
+    <nav>
+      <a href="#whoami">Whoami</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
     <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+      <a href="resume.pdf" download="My_Resume.pdf">Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
       <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
   </header>
-
-  <nav>
-    <a href="#whoami">Whoami</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#certs">Certifications</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-  </nav>
 
   <section id="whoami">
     <h1>Whoami</h1>
@@ -349,5 +296,6 @@
   </section>
 </body>
 </html>
+
 
 
