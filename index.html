@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Hacker-Themed Personal Website</title>
+  <title>Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     /* Existing styles */
@@ -220,6 +220,42 @@
       .hamburger.open + nav + .header-links {
         display: flex;
       }
+
+      /* Hamburger panel style */
+      .hamburger-panel {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 75%;
+        height: 100%;
+        background-color: #111;
+        padding: 20px;
+        z-index: 1000;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hamburger-panel.open {
+        display: flex;
+      }
+
+      .hamburger-panel a {
+        color: #00FFFF;
+        text-decoration: none;
+        margin: 10px 0;
+        font-size: 18px;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+        border: 1px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .hamburger-panel a:hover {
+        background-color: #00FFFF;
+        color: #000;
+      }
     }
 
     html {
@@ -246,8 +282,10 @@
 
       // Handle hamburger menu toggle
       const hamburger = document.querySelector('.hamburger');
+      const hamburgerPanel = document.querySelector('.hamburger-panel');
       hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('open');
+        hamburgerPanel.classList.toggle('open');
       });
     });
 
@@ -273,14 +311,14 @@
 </head>
 <body>
   <header>
-    <h2>My Hacker-Themed Website</h2>
+    <h2>Sasanka Nimes</h2>
     <!-- Hamburger Menu -->
     <button class="hamburger">
       <div></div>
       <div></div>
       <div></div>
     </button>
-    <!-- Navigation for Mobile -->
+    <!-- Navigation for Desktop -->
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -296,6 +334,19 @@
     </div>
   </header>
 
+  <!-- Hamburger Panel for Mobile -->
+  <div class="hamburger-panel">
+    <a href="#whoami">Whoami</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+  </div>
+
   <section id="whoami">
     <h1>Whoami</h1>
     <div class="whoami-content">
@@ -308,50 +359,8 @@
     </div>
   </section>
 
-  <section id="projects">
-    <h1>Projects</h1>
-    <p>Here are some of the projects I've worked on:</p>
-    <ul>
-      <li>Penetration Testing Tool (Web App + Automation)</li>
-      <li>IoT-Based Indoor Navigation System</li>
-      <li>Healthcare Mobile Application (React Native)</li>
-    </ul>
-  </section>
+  <!-- Other sections here (projects, experience, etc.) -->
 
-  <section id="experience">
-    <h1>Experience</h1>
-    <p>Experience includes:</p>
-    <ul>
-      <li>Ethical Hacking coursework penetration tests on enterprise networks.</li>
-      <li>Digital forensics case analysis and report preparation.</li>
-      <li>Web application security assessments and vulnerability scans.</li>
-    </ul>
-  </section>
-
-  <section id="certs">
-    <h1>Certifications</h1>
-    <p>Here are my certifications:</p>
-    <ul>
-      <li>TryHackMe Penetration Tester Path Completion</li>
-      <li>Cybersecurity Training & Internship (Oeson)</li>
-    </ul>
-  </section>
-
-  <section id="skills">
-    <h1>Skills</h1>
-    <p>Technical skills:</p>
-    <ul>
-      <li>Penetration Testing & Vulnerability Scanning</li>
-      <li>Programming: Python, Java, JavaScript, React, Flutter</li>
-      <li>Database Management: PostgreSQL, MongoDB</li>
-    </ul>
-  </section>
-
-  <section id="education">
-    <h1>Education</h1>
-    <p>Computer Security Undergraduate, Plymouth University</p>
-  </section>
 </body>
 </html>
-
 
