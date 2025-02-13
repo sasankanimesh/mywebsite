@@ -3,88 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    /* Existing styles */
     body {
+      background-color: #000;
+      color: #00FF00;
       font-family: 'Share Tech Mono', monospace;
-      background-color: #121212;
-      color: #e0e0e0;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     header {
-      background-color: #1e1e1e;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #111;
       padding: 20px;
-      text-align: center;
-    }
-
-    h2 {
-      margin: 0;
+      color: #00FFFF;
+      z-index: 1000;
     }
 
     nav {
-      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
-      color: #00ff00;
+      color: #00FFFF;
       text-decoration: none;
-      margin: 0 10px;
-      font-size: 1.2em;
+      margin: 0 15px;
+      font-size: 20px;
+      padding: 5px 10px;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      cursor: pointer;
     }
 
     nav a:hover {
-      text-decoration: underline;
-    }
-
-    .header-links a {
-      color: #00ffff;
-      text-decoration: none;
-      margin: 0 10px;
+      border-color: #00FFFF;
+      background-color: #222;
     }
 
     section {
-      padding: 50px;
-      border-bottom: 1px solid #333;
+      padding: 100px 20px;
+      text-align: center;
     }
 
     h1 {
-      color: #00ff00;
+      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .header-links a {
+      color: #00FFFF;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+      border: 1px solid #00FFFF;
+      padding: 5px 10px;
+      transition: all 0.3s;
+    }
+
+    .header-links a:hover {
+      background-color: #00FFFF;
+      color: #000;
     }
 
     .whoami-content {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
     }
 
     .cmd-simulation {
-      background-color: #000;
-      color: #00ff00;
+      background-color: #111;
       padding: 20px;
-      font-size: 1.2em;
-      border-radius: 8px;
-      width: 80%;
-      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px #00FF00;
+      text-align: left;
+      font-size: 18px;
       white-space: pre-wrap;
+      line-height: 1.5;
+      color: #00FF00;
+      flex: 1 1 300px;
     }
 
-    video, img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin: 10px 0;
+    #whoami-photo {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+
+    #whoami-video {
+      border: 3px solid #00FFFF;
+      border-radius: 10px;
+      width: 300px;
+      height: auto;
+      flex: 1 1 300px;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        font-size: 16px;
+        padding: 5px;
+      }
+
+      .whoami-content {
+        flex-direction: column;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Force the page to load at the "Whoami" section
-      window.location.hash = ''; // Clear any existing URL fragments
-      window.scrollTo(0, 0);     // Scroll to the top of the page
+      // Always scroll to the top (Whoami section) when the page is first loaded
+      window.scrollTo(0, 0);
+
+      // Ensure the page fully refreshes
+      window.location.reload(true);
+
+      // Initialize the "whoami" section CMD simulation
       loadWhoamiContent();
 
-      // Set up smooth scrolling for nav links without updating the URL
+      // Set up smooth scrolling for all nav links without updating the URL
       document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -189,4 +253,5 @@
   </section>
 </body>
 </html>
+
 
