@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Personal Website</title>
+  <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
     /* Existing styles */
@@ -122,7 +122,6 @@
       flex: 1 1 300px;
     }
 
-    /* Mobile view changes */
     @media (max-width: 600px) {
       header {
         flex-direction: row;
@@ -130,54 +129,48 @@
         padding: 10px;
       }
 
-      header h2 {
-        font-size: 18px;
-      }
-
       nav {
-        display: none;
+        display: none; /* Hide the navigation links on mobile */
       }
 
-      .header-links {
-        display: none;
+      .menu-button {
+        display: block;
+        background-color: #00FF00;
+        color: #000;
+        padding: 10px;
+        cursor: pointer;
+        border: none;
       }
 
       .mobile-nav {
-        display: flex;
-        flex-direction: column;
+        display: block;
+        background-color: #111;
         position: fixed;
         bottom: 0;
         left: 0;
         width: 100%;
-        background-color: #111;
+        padding: 10px;
+        text-align: center;
         z-index: 999;
-        padding: 10px 0;
       }
 
       .mobile-nav a {
-        text-align: center;
-        padding: 10px 0;
-        font-size: 16px;
-        border-top: 1px solid #00FFFF;
         color: #00FFFF;
+        text-decoration: none;
+        padding: 5px 10px;
+        margin: 0 5px;
+        font-size: 16px;
+        border: 1px solid #00FFFF;
+        transition: all 0.3s;
       }
 
       .mobile-nav a:hover {
-        background-color: #222;
+        background-color: #00FFFF;
+        color: #000;
       }
 
-      .mobile-nav .header-links {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .whoami-content {
-        flex-direction: column;
-      }
-
-      #whoami-photo, #whoami-video {
-        width: 100%;
-        max-width: 300px;
+      .header-links {
+        display: none;
       }
 
       section {
@@ -196,6 +189,15 @@
       img, video {
         max-width: 100%;
         height: auto;
+      }
+
+      .whoami-content {
+        flex-direction: column;
+      }
+
+      #whoami-photo, #whoami-video {
+        width: 100%;
+        max-width: 300px;
       }
     }
 
@@ -218,6 +220,12 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
+      });
+
+      // Toggle mobile navigation menu
+      document.querySelector('.menu-button').addEventListener('click', () => {
+        const mobileNav = document.querySelector('.mobile-nav');
+        mobileNav.classList.toggle('open');
       });
     });
 
@@ -243,18 +251,22 @@
 </head>
 <body>
   <header>
-    <h2>Sasanka Nimes</h2>
-    <nav>
-      <a href="#whoami">Whoami</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-    </nav>
+    <h2>My Hacker-Themed Website</h2>
+    <button class="menu-button">☰</button>
   </header>
 
-  <!-- Main sections -->
+  <div class="mobile-nav">
+    <a href="#whoami">Whoami</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+    <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+    <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+  </div>
+
   <section id="whoami">
     <h1>Whoami</h1>
     <div class="whoami-content">
@@ -310,23 +322,6 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
-
-  <!-- Mobile footer nav -->
-  <div class="mobile-nav">
-    <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-    </div>
-    <nav>
-      <a href="#whoami">Whoami</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-    </nav>
-  </div>
 </body>
 </html>
 
