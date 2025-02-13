@@ -140,7 +140,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Activate the 'Whoami' section by default
+      // Initially show the 'Whoami' section
       showSection('whoami');
 
       // Event listener for smooth scrolling navigation
@@ -150,14 +150,19 @@
           event.preventDefault();
           const targetId = event.target.getAttribute('href').substring(1);
           showSection(targetId);
-          window.location.hash = targetId; // Update URL hash
         });
       });
+
+      // Initialize the "whoami" section CMD simulation
+      loadWhoamiContent();
     });
 
     function showSection(id) {
+      // Hide all sections and remove the active class
       const sections = document.querySelectorAll('section');
       sections.forEach(section => section.classList.remove('active'));
+
+      // Show the clicked section
       const section = document.getElementById(id);
       if (section) section.classList.add('active');
     }
@@ -177,8 +182,8 @@
     function loadWhoamiContent() {
       const cmdOutput = document.getElementById('cmd-output');
       const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
-      cmdOutput.textContent = "";
-      typeEffect(cmdOutput, outputText, 80);
+      cmdOutput.textContent = ""; // Reset text
+      typeEffect(cmdOutput, outputText, 80); // Type the effect
     }
   </script>
 </head>
@@ -186,7 +191,7 @@
   <header>
     <h2>My Hacker-Themed Website</h2>
     <nav>
-      <a href="#whoami" onclick="showSection('whoami'); loadWhoamiContent();">Whoami</a>
+      <a href="#whoami" onclick="showSection('whoami')">Whoami</a>
       <a href="#projects" onclick="showSection('projects')">Projects</a>
       <a href="#experience" onclick="showSection('experience')">Experience</a>
       <a href="#certs" onclick="showSection('certs')">Certifications</a>
@@ -257,5 +262,4 @@
   </section>
 </body>
 </html>
-
 
