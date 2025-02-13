@@ -6,7 +6,7 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Hacker-Themed Personal Website</title>
+  <title>Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <!-- Font Awesome CDN for Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -114,18 +114,19 @@
       color: #00FF00;
       flex: 1 1 300px;
     }
-    /* Icon button styling */
+ /* Icon button styling */
 .icon-button {
   display: inline-block;
-  width: 40px; /* Set width of the icon */
-  height: 40px; /* Set height of the icon */
-  margin: 0 10px;
+  width: 60px; /* Set width of the icon */
+  height: 60px; /* Set height of the icon */
+  text-align: center;
+  margin: 0 15px;
   transition: all 0.3s ease;
 }
 
 .icon-button img {
-  width: 100%;
-  height: 100%;
+  width: 30px; /* Adjust icon size */
+  height: 30px; /* Adjust icon size */
   object-fit: contain;
   border-radius: 50%;
   transition: transform 0.3s ease;
@@ -133,6 +134,16 @@
 
 .icon-button:hover img {
   transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Styling for the name text below the icon */
+.icon-name {
+  display: block;
+  font-size: 12px; /* Adjust font size */
+  color: #00FFFF;
+  margin-top: 5px;
+  text-transform: lowercase; /* Make the text lowercase */
+  font-family: 'Share Tech Mono', monospace;
 }
 
 
@@ -245,7 +256,7 @@
 </head>
 <body>
 <header>
-  <h2>My Hacker-Themed Website</h2>
+  <h2>Sasanka Nimes</h2>
   <nav>
     <a href="#whoami">Whoami</a>
     <a href="#projects">Projects</a>
@@ -258,14 +269,17 @@
     <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
     <!-- LinkedIn Icon Button -->
     <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="icon-button">
-      <img src="assets/img/linkedin-icon.png" alt="LinkedIn" class="social-icon">
+      <img src="assets/img/linkedin.svg" alt="LinkedIn" class="social-icon">
+      <span class="icon-name">linkedin</span> <!-- Display name below icon -->
     </a>
     <!-- TryHackMe Icon Button -->
     <a href="https://tryhackme.com/p/your-username" target="_blank" class="icon-button">
-      <img src="assets/img/tryhackme-icon.png" alt="TryHackMe" class="social-icon">
+      <img src="assets/img/fi-snsuxl-tryhackme.svg" alt="TryHackMe" class="social-icon">
+      <span class="icon-name">tryhackme</span> <!-- Display name below icon -->
     </a>
   </div>
 </header>
+
 
 
   <section id="whoami">
