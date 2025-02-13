@@ -12,36 +12,32 @@
       font-family: 'Share Tech Mono', monospace;
       margin: 0;
       padding: 0;
+      padding-top: 80px; /* Prevent body content from being hidden under the fixed header */
     }
     header {
-      background-color: #111;
-      padding: 20px;
-      color: #00FFFF;
-    }
-    .header-content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-    .header-links a {
+      background-color: #111;
+      padding: 20px;
       color: #00FFFF;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 16px;
-      border: 1px solid #00FFFF;
-      padding: 5px 10px;
-      transition: all 0.3s;
-    }
-    .header-links a:hover {
-      background-color: #00FFFF;
-      color: #000;
+      z-index: 1000; /* Ensure header is on top of other content */
     }
     nav {
+      position: fixed;
+      top: 80px; /* Align it below the header */
+      left: 0;
+      right: 0;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       background-color: #111;
       padding: 10px 0;
+      z-index: 999;
     }
     nav a {
       color: #00FFFF;
@@ -57,9 +53,9 @@
       background-color: #222;
     }
     section {
-      display: none;
       padding: 50px;
       text-align: center;
+      min-height: 100vh; /* Make each section fill the screen */
     }
     section.active {
       display: block;
@@ -71,6 +67,19 @@
     p {
       font-size: 18px;
       line-height: 1.6;
+    }
+    .header-links a {
+      color: #00FFFF;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+      border: 1px solid #00FFFF;
+      padding: 5px 10px;
+      transition: all 0.3s;
+    }
+    .header-links a:hover {
+      background-color: #00FFFF;
+      color: #000;
     }
     #whoami {
       position: relative;
@@ -97,10 +106,9 @@
     }
   </style>
   <script>
-    function showSection(id) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => section.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
+    function scrollToSection(id) {
+      const section = document.getElementById(id);
+      section.scrollIntoView({ behavior: 'smooth' });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -121,26 +129,24 @@
 </head>
 <body>
   <header>
-    <div class="header-content">
-      <h2>My Hacker-Themed Website</h2>
-      <div class="header-links">
-        <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-        <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-        <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-      </div>
+    <h2>My Hacker-Themed Website</h2>
+    <div class="header-links">
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('whoami')">Whoami</a>
-    <a href="#" onclick="showSection('projects')">Projects</a>
-    <a href="#" onclick="showSection('experience')">Experience</a>
-    <a href="#" onclick="showSection('certs')">Certifications</a>
-    <a href="#" onclick="showSection('skills')">Skills</a>
-    <a href="#" onclick="showSection('education')">Education</a>
+    <a href="#" onclick="scrollToSection('whoami')">Whoami</a>
+    <a href="#" onclick="scrollToSection('projects')">Projects</a>
+    <a href="#" onclick="scrollToSection('experience')">Experience</a>
+    <a href="#" onclick="scrollToSection('certs')">Certifications</a>
+    <a href="#" onclick="scrollToSection('skills')">Skills</a>
+    <a href="#" onclick="scrollToSection('education')">Education</a>
   </nav>
 
-  <section id="whoami" class="active">
+  <section id="whoami">
     <div class="cmd-simulation" id="cmd-output"></div>
   </section>
 
@@ -189,5 +195,4 @@
   </section>
 </body>
 </html>
-
 
