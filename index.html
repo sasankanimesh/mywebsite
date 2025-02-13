@@ -9,7 +9,7 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* Existing styles */
+    /* Base Styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -122,33 +122,25 @@
       flex: 1 1 300px;
     }
 
-    /* Mobile view updates */
+    /* Responsive Styles */
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-      }
-
-      nav {
-        display: none;
+      nav a {
+        font-size: 16px;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
       }
 
       .header-links {
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        position: fixed;
-        bottom: 0;
-        background-color: #111;
-        padding: 10px;
+        flex-direction: column;
+        align-items: center;
       }
 
       .header-links a {
         font-size: 14px;
-        width: 33%;
-        text-align: center;
-        padding: 10px;
+        margin: 5px 0;
+        padding: 8px;
+        width: 100%;
       }
 
       .whoami-content {
@@ -179,12 +171,14 @@
       }
     }
 
+    /* Smooth Scroll Behavior */
     html {
       scroll-behavior: smooth;
     }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -233,7 +227,7 @@
       <a href="#education">Education</a>
     </nav>
     <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Resume</a>
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
       <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
     </div>
@@ -296,6 +290,5 @@
   </section>
 </body>
 </html>
-
 
 
