@@ -15,27 +15,24 @@
     }
     header {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
       background-color: #111;
       padding: 20px;
       color: #00FFFF;
-      position: fixed; /* Fix the header at the top */
+      position: fixed;
       width: 100%;
       top: 0;
       left: 0;
-      z-index: 1000; /* Ensure the header is above other content */
+      z-index: 1000;
     }
     nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       background-color: #111;
       padding: 20px;
-      position: fixed; /* Fix the nav bar at the top */
-      top: 60px; /* Adjust this value to prevent overlap with the header */
       width: 100%;
-      z-index: 999; /* Slightly lower than the header */
+      z-index: 999;
     }
     nav a {
       color: #00FFFF;
