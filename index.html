@@ -33,6 +33,11 @@
       z-index: 1000;
     }
 
+    header h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+
     nav {
       display: flex;
       justify-content: center;
@@ -125,31 +130,46 @@
     @media (max-width: 600px) {
       nav {
         display: none;
-        flex-direction: column;
         width: 100%;
-      }
-
-      nav.active {
-        display: flex;
+        flex-direction: column;
       }
 
       nav a {
-        font-size: 16px;
-        padding: 10px 0;
+        font-size: 18px;
+        padding: 10px;
         width: 100%;
         text-align: center;
       }
 
-      .header-links {
-        flex-direction: column;
-        align-items: center;
+      nav a:hover {
+        background-color: #222;
       }
 
-      .header-links a {
-        font-size: 14px;
-        margin: 5px 0;
-        padding: 8px;
-        width: 100%;
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #111;
+        padding: 10px;
+        color: #00FFFF;
+        z-index: 1000;
+      }
+
+      header h2 {
+        font-size: 18px;
+      }
+
+      .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 25px;
+        color: #00FFFF;
+        background: none;
+        border: none;
+      }
+
+      .menu-btn.open + nav {
+        display: flex;
       }
 
       .whoami-content {
@@ -178,15 +198,6 @@
         max-width: 100%;
         height: auto;
       }
-
-      .menu-btn {
-        display: block;
-        font-size: 30px;
-        cursor: pointer;
-        color: #00FFFF;
-        background: transparent;
-        border: none;
-      }
     }
 
     html {
@@ -195,6 +206,7 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -210,12 +222,10 @@
         });
       });
 
-      // Toggle the navigation menu for mobile view
-      const menuBtn = document.getElementById('menu-btn');
-      const nav = document.querySelector('nav');
-      
+      // Toggle menu for mobile view
+      const menuBtn = document.querySelector('.menu-btn');
       menuBtn.addEventListener('click', () => {
-        nav.classList.toggle('active');
+        menuBtn.classList.toggle('open');
       });
     });
 
@@ -242,7 +252,7 @@
 <body>
   <header>
     <h2>My Hacker-Themed Website</h2>
-    <button id="menu-btn" class="menu-btn">&#9776;</button>
+    <button class="menu-btn">&#9776;</button>
     <nav>
       <a href="#whoami">Whoami</a>
       <a href="#projects">Projects</a>
@@ -250,12 +260,10 @@
       <a href="#certs">Certifications</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
-    </nav>
-    <div class="header-links">
       <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
       <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
       <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-    </div>
+    </nav>
   </header>
 
   <section id="whoami">
@@ -315,3 +323,4 @@
   </section>
 </body>
 </html>
+
