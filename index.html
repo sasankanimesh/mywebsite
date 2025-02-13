@@ -6,9 +6,10 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Hacker-Themed Personal Website</title>
+  <title>Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
+    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -30,10 +31,6 @@
       padding: 20px;
       color: #00FFFF;
       z-index: 1000;
-    }
-
-    header h2 {
-      margin-left: 10px;
     }
 
     nav {
@@ -125,65 +122,64 @@
       flex: 1 1 300px;
     }
 
+    /* Mobile view changes */
     @media (max-width: 600px) {
-      nav {
-        display: none; /* Hide default navigation */
-      }
-
       header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: #111;
-        padding: 15px;
+        flex-direction: row;
         justify-content: space-between;
+        padding: 10px;
       }
 
-      /* Mobile Menu Bar */
-      .mobile-menu {
+      header h2 {
+        font-size: 18px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .header-links {
+        display: none;
+      }
+
+      .mobile-nav {
         display: flex;
         flex-direction: column;
         position: fixed;
         bottom: 0;
         left: 0;
-        right: 0;
+        width: 100%;
         background-color: #111;
-        color: #00FFFF;
-        padding: 10px;
-        z-index: 100;
-        font-size: 14px;
+        z-index: 999;
+        padding: 10px 0;
+      }
+
+      .mobile-nav a {
         text-align: center;
-        gap: 10px;
-      }
-
-      .mobile-menu a {
+        padding: 10px 0;
+        font-size: 16px;
+        border-top: 1px solid #00FFFF;
         color: #00FFFF;
-        text-decoration: none;
-        margin: 0;
-        padding: 5px;
-        font-size: 14px;
       }
 
-      .mobile-menu a:hover {
-        border-color: #00FFFF;
+      .mobile-nav a:hover {
         background-color: #222;
       }
 
-      .menu-toggle {
-        display: flex;
+      .mobile-nav .header-links {
+        flex-direction: row;
         justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        font-size: 20px;
-        color: #00FFFF;
       }
 
-      .header-links {
-        display: none; /* Hide header links for mobile */
+      .whoami-content {
+        flex-direction: column;
       }
 
-      /* Adjust sections for mobile */
+      #whoami-photo, #whoami-video {
+        width: 100%;
+        max-width: 300px;
+      }
+
       section {
         padding: 50px 10px;
       }
@@ -209,7 +205,6 @@
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      
       window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
       window.scrollTo(0, 0);
 
@@ -223,12 +218,6 @@
           const sectionId = this.getAttribute('href').substring(1);
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
-      });
-
-      // Mobile menu toggle
-      document.getElementById('menu-toggle').addEventListener('click', () => {
-        const menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('show');
       });
     });
 
@@ -254,27 +243,18 @@
 </head>
 <body>
   <header>
-    <h2>My Hacker-Themed Website</h2>
-    <div class="menu-toggle" id="menu-toggle">
-      ☰
-    </div>
-    <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
-      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
-    </div>
+    <h2>Sasanka Nimes</h2>
+    <nav>
+      <a href="#whoami">Whoami</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
   </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="mobile-menu">
-    <a href="#whoami">Whoami</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#certs">Certifications</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-  </div>
-
+  <!-- Main sections -->
   <section id="whoami">
     <h1>Whoami</h1>
     <div class="whoami-content">
@@ -287,7 +267,15 @@
     </div>
   </section>
 
-
+  <section id="projects">
+    <h1>Projects</h1>
+    <p>Here are some of the projects I've worked on:</p>
+    <ul>
+      <li>Penetration Testing Tool (Web App + Automation)</li>
+      <li>IoT-Based Indoor Navigation System</li>
+      <li>Healthcare Mobile Application (React Native)</li>
+    </ul>
+  </section>
 
   <section id="experience">
     <h1>Experience</h1>
@@ -323,9 +311,22 @@
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
 
-  <!-- Other sections (projects, experience, certifications, skills, education) remain unchanged -->
-
+  <!-- Mobile footer nav -->
+  <div class="mobile-nav">
+    <div class="header-links">
+      <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
+      <a href="https://www.linkedin.com/in/your-profile" target="_blank">LinkedIn</a>
+      <a href="https://tryhackme.com/p/your-username" target="_blank">TryHackMe</a>
+    </div>
+    <nav>
+      <a href="#whoami">Whoami</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+  </div>
 </body>
 </html>
-
 
