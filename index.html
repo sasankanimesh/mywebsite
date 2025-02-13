@@ -9,7 +9,7 @@
   <title>Hacker-Themed Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    /* General Styles */
+    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -35,18 +35,17 @@
 
     nav {
       display: flex;
-      justify-content: space-evenly;
-      gap: 15px;
-      width: 100%;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: #00FFFF;
       text-decoration: none;
-      padding: 10px 15px;
-      font-size: 18px;
-      border: 2px solid transparent;
-      border-radius: 5px;
+      margin: 0 15px;
+      font-size: 20px;
+      padding: 5px 10px;
+      border: 1px solid transparent;
       transition: all 0.3s;
       cursor: pointer;
     }
@@ -123,33 +122,17 @@
       flex: 1 1 300px;
     }
 
-    /* Mobile view adjustments */
     @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        margin-top: 10px;
-      }
-
       nav a {
         font-size: 16px;
-        padding: 15px 0;
+        padding: 10px 0;
         width: 100%;
         text-align: center;
-        border-radius: 10px;
-        margin: 0;
-      }
-
-      nav a:hover {
-        background-color: #00FFFF;
-        color: #000;
       }
 
       .header-links {
         flex-direction: column;
         align-items: center;
-        margin-top: 10px;
       }
 
       .header-links a {
@@ -191,6 +174,44 @@
       scroll-behavior: smooth;
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
+      window.scrollTo(0, 0);
+
+      // Initialize the "whoami" section CMD simulation
+      loadWhoamiContent();
+
+      // Set up smooth scrolling for all nav links without updating the URL
+      document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const sectionId = this.getAttribute('href').substring(1);
+          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    });
+
+    function typeEffect(element, text, delay = 100) {
+      let index = 0;
+      function type() {
+        if (index < text.length) {
+          element.textContent += text[index];
+          index++;
+          setTimeout(type, delay);
+        }
+      }
+      type();
+    }
+
+    function loadWhoamiContent() {
+      const cmdOutput = document.getElementById('cmd-output');
+      const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
+      cmdOutput.textContent = ""; // Reset text
+      typeEffect(cmdOutput, outputText, 80); // Type the effect
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -265,45 +286,6 @@
     <h1>Education</h1>
     <p>Computer Security Undergraduate, Plymouth University</p>
   </section>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      window.history.scrollRestoration = 'manual'; // Disable browser's automatic scroll restoration
-      window.scrollTo(0, 0);
-
-      // Initialize the "whoami" section CMD simulation
-      loadWhoamiContent();
-
-      // Set up smooth scrolling for all nav links without updating the URL
-      document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const sectionId = this.getAttribute('href').substring(1);
-          document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        });
-      });
-    });
-
-    function typeEffect(element, text, delay = 100) {
-      let index = 0;
-      function type() {
-        if (index < text.length) {
-          element.textContent += text[index];
-          index++;
-          setTimeout(type, delay);
-        }
-      }
-      type();
-    }
-
-    function loadWhoamiContent() {
-      const cmdOutput = document.getElementById('cmd-output');
-      const outputText = "whoami\nCybersecurity Enthusiast\nPenetration Tester\nDeveloper | Problem Solver | Hacker at Heart\n";
-      cmdOutput.textContent = ""; // Reset text
-      typeEffect(cmdOutput, outputText, 80); // Type the effect
-    }
-  </script>
 </body>
 </html>
-
 
