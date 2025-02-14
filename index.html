@@ -6,10 +6,9 @@
   <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <title>Personal Website</title>
+  <title>Sasanka's Personal Website</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-  <!-- Font Awesome CDN for Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
   <style>
     /* Existing styles */
     body {
@@ -24,15 +23,22 @@
     header {
       position: fixed;
       top: 0;
-      left: 0;
+      left: 5px;
+    
+      
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: #111;
-      padding: 20px;
+      /* padding: 10px; */
       color: #00FFFF;
       z-index: 1000;
+    }
+
+    header h1 {
+     
+      left: 10px;
     }
 
     nav {
@@ -57,6 +63,14 @@
       background-color: #222;
     }
 
+    .header-links {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap; /* Allow wrapping for small screens */
+      margin-left: 20px;
+    }
+
     .header-links a {
       color: #00FFFF;
       text-decoration: none;
@@ -65,18 +79,19 @@
       border: 1px solid #00FFFF;
       padding: 5px 10px;
       transition: all 0.3s;
-      display: inline-flex;
+      display: flex;
       align-items: center;
+     
+    }
+
+    .header-links a i {
+      margin-right: 8px; /* Space between icon and text */
+      font-size: 12px; /* Ensure the icons are visible */
     }
 
     .header-links a:hover {
       background-color: #00FFFF;
       color: #000;
-    }
-
-    .header-links i {
-      margin-right: 5px;
-      font-size: 18px;
     }
 
     section {
@@ -85,8 +100,9 @@
     }
 
     h1 {
-      text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+      text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF;
       margin-bottom: 30px;
+      font-size: 30px;
     }
 
     p {
@@ -102,6 +118,11 @@
       gap: 20px;
     }
 
+    /* .cmd-simulation,
+.pixelated-image {
+  flex: 1 1 48%; /* This will make them take up half of the container each */
+  /* max-width: 48%;  Ensures it doesn't stretch beyond the container
+} */ 
     .cmd-simulation {
       background-color: #111;
       padding: 20px;
@@ -115,47 +136,13 @@
       flex: 1 1 300px;
     }
 
-/* Icon button styling */
-.icon-button {
-  display: inline-block;
-  text-align: center;
-  margin: 0 15px;
-  transition: all 0.3s ease;
-  padding: 0; /* Remove any padding */
-}
-
-.icon-button img {
-  width: 18px; /* Set the size of the icon */
-  height: 15px; /* Set the size of the icon */
-  object-fit: contain;
-  border-radius: 50%; /* Make the icon circular */
-  transition: transform 0.3s ease;
-}
-
-.icon-button:hover img {
-  transform: scale(1.1); /* Slight zoom effect on hover */
-}
-
-/* Styling for the name text below the icon */
-.icon-name {
-  display: block;
-  font-size: 12px; /* Adjust font size */
-  color: #00FFFF;
-  margin-top: 5px;
-  text-transform: lowercase; /* Make the text lowercase */
-  font-family: 'Share Tech Mono', monospace;
-  margin-right: 10px; /* Add more space between the icon and the name */
-}
-
-
-
-    #whoami-photo {
+    /* #whoami-photo {
       border: 3px solid #00FFFF;
       border-radius: 10px;
       width: 300px;
       height: auto;
       flex: 1 1 300px;
-    }
+    } */
 
     #whoami-video {
       border: 3px solid #00FFFF;
@@ -165,12 +152,48 @@
       flex: 1 1 300px;
     }
 
-    @media (max-width: 600px) {
-      nav a {
-        font-size: 16px;
-        padding: 10px 0;
+    /* Hamburger menu styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: #00FFFF;
+      border-radius: 5px;
+    }
+
+    #nav-menu {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex; /* Show hamburger menu on mobile */
+      }
+
+      nav {
+        display: none; /* Hide navigation links initially */
+        flex-direction: column;
         width: 100%;
         text-align: center;
+      }
+
+      #nav-menu.show {
+        display: flex; /* Show navigation links when hamburger is clicked */
+      }
+
+      nav a {
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
       }
 
       .header-links {
@@ -184,32 +207,25 @@
         padding: 8px;
         width: 100%;
       }
+    }
 
-      .whoami-content {
-        flex-direction: column;
+    @media (min-width: 769px) {
+      .hamburger {
+        display: none; /* Hide hamburger on larger screens */
       }
 
-      #whoami-photo, #whoami-video {
-        width: 100%;
-        max-width: 300px;
+      nav {
+        display: flex; /* Display nav links directly on larger screens */
       }
 
-      section {
-        padding: 50px 10px;
+      .header-links {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        max-width: 100%; /* Prevent overflowing on desktop */
       }
 
-      h1 {
-        font-size: 24px;
-      }
-
-      p, ul {
-        font-size: 16px;
-        padding: 0 10px;
-      }
-
-      img, video {
-        max-width: 100%;
-        height: auto;
+      .header-links a {
+        margin: 10px;
       }
     }
 
@@ -234,6 +250,12 @@
           document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
         });
       });
+
+      // Hamburger menu toggle
+      document.querySelector('.hamburger').addEventListener('click', () => {
+        const navMenu = document.getElementById('nav-menu');
+        navMenu.classList.toggle('show');
+      });
     });
 
     function typeEffect(element, text, delay = 100) {
@@ -257,34 +279,32 @@
   </script>
 </head>
 <body>
-<header>
-  <h2>Sasanka Nimes</h2>
-  <nav>
-    <a href="#whoami">Whoami</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#certs">Certifications</a>
-    <a href="#skills">Skills</a>
-    <a href="#education">Education</a>
-  </nav>
-  <div class="header-links">
-    <a href="resume.pdf" download="My_Resume.pdf">Download Resume</a>
-    <!-- LinkedIn Icon Button -->
-    <a href="https://www.linkedin.com/in/your-profile" target="_blank" class="icon-button">
-      <img src="assets/img/linkedin.svg" alt="LinkedIn" class="social-icon">
-      <span class="icon-name">linkedin</span> <!-- Display name below icon -->
-    </a>
-    <!-- TryHackMe Icon Button -->
-    <a href="https://tryhackme.com/p/your-username" target="_blank" class="icon-button">
-      <img src="assets/img/fi-snsuxl-tryhackme.svg" alt="TryHackMe" class="social-icon">
-      <span class="icon-name">tryhackme</span> <!-- Display name below icon -->
-    </a>
-  </div>
-</header>
+  <header>
+    <h1>SASANKA NIMES</h1>
+    <nav id="nav-menu">
+      <a href="#whoami">Who Am I?</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
+    <div class="header-links">
+      <a href="resume.pdf" download="Sasanka Nimes - Resume.pdf"><i class="fas fa-download"></i>Download Resume</a>
+      <a href="https://linkedin.com/in/sasanka-priyantha" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+      <a href="https://tryhackme.com/r/p/sasanka" target="_blank">
+        <img src="/mnt/partition2/MyWebSite/my-portfolio/assets/img/fi-snsuxl-tryhackme.svg" alt="TryHackMe Icon" style="width: 15px; height: 15px; margin-right: 8px; background-color: #00FFFF;">
+        TryHackMe
+      </a>      
+    </div>
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
 
-
-
-  <section id="whoami">
+  <!-- <section id="whoami">
     <h1>Whoami</h1>
     <div class="whoami-content">
       <div class="cmd-simulation" id="cmd-output"></div>
@@ -294,17 +314,152 @@
       </video>
       <img id="whoami-photo" src="your-photo.jpg" alt="Your Photo">
     </div>
+  </section> -->
+  <section id="whoami">
+    <h1>Whoami</h1>
+    <div class="whoami-content">
+      <div class="cmd-simulation" id="cmd-output"></div>
+      <div class="pixelated-image" id="whoami-photo"></div>
+    </div>
   </section>
+  
+  <style>
+  
+  /* Container for the pixelated effect */
+  .pixelated-image {
+    width: 300px; /* Increased the width */
+    height: 300px; /* Increased the height */
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(30, 1fr); /* Increased grid size (30x30) */
+    grid-template-rows: repeat(30, 1fr); /* Increased grid size (30x30) */
+    background-image: url("your-photo.jpg");
+    background-size: 300px 300px; /* Adjust background size to fit the new grid */
+    overflow: hidden;
+  }
 
-  <section id="projects">
-    <h1>Projects</h1>
-    <p>Here are some of the projects I've worked on:</p>
-    <ul>
-      <li>Penetration Testing Tool (Web App + Automation)</li>
-      <li>IoT-Based Indoor Navigation System</li>
-      <li>Healthcare Mobile Application (React Native)</li>
-    </ul>
-  </section>
+  /* Each "pixel" starts invisible */
+  .pixelated-image div {
+    width: 100%;
+    height: 100%;
+    background-size: 300px 300px; /* Adjust background size to match the new grid size */
+    background-image: url("assets/img/me.jpeg");
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.getElementById("whoami-photo");
+
+    // Create 30x30 grid of "pixels" (adjusted for larger image)
+    for (let row = 0; row < 30; row++) {
+      for (let col = 0; col < 30; col++) {
+        const pixel = document.createElement("div");
+        pixel.style.backgroundPosition = `${-col * 10}px ${-row * 10}px`; 
+        container.appendChild(pixel);
+      }
+    }
+
+    // Gradually reveal the pixels
+    let pixels = Array.from(container.children);
+    let i = 0;
+
+    function revealNextPixel() {
+      if (i < pixels.length) {
+        pixels[i].style.opacity = 1;
+        i++;
+        setTimeout(revealNextPixel, 30); // Adjust speed here
+      }
+    }
+
+    revealNextPixel();
+  });
+</script>
+
+  
+<section id="projects">
+  <h1>Projects</h1>
+  <p>Here are some of the projects I've worked on:</p>
+
+  <div class="project-category">
+    <h2>What I'm Working On</h2>
+    <div class="project-box">
+      <img src="assets/img/default.jpg" alt="Penetration Testing Tool">
+      <h3>Penetration Testing Tool (Web App + Automation)</h3>
+      <p>A tool that automates penetration testing and generates reports.</p>
+      <a href="pen_test_tool_details.html">Read More</a>
+    </div>
+  </div>
+
+  <div class="project-category">
+    <h2>Completed Projects</h2>
+    <div class="project-box">
+      <img src="path_to_image_of_project_2.jpg" alt="IoT-Based Indoor Navigation">
+      <h3>IoT-Based Indoor Navigation System</h3>
+      <p>An indoor navigation system based on IoT technology for better spatial orientation.</p>
+      <a href="iot_navigation_details.html">Read More</a>
+    </div>
+    
+    <div class="project-box">
+      <img src="path_to_image_of_project_3.jpg" alt="Healthcare Mobile Application">
+      <h3>Healthcare Mobile Application (React Native)</h3>
+      <p>A mobile app for managing healthcare services and patient information.</p>
+      <a href="healthcare_app_details.html">Read More</a>
+    </div>
+  </div>
+</section>
+<style>
+projects {
+  margin: 20px;
+}
+
+.project-category {
+  margin-bottom: 30px;
+}
+
+.project-box {
+  
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.project-box:hover {
+  transform: scale(1.05);
+}
+
+.project-box img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.project-box h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.project-box p {
+  font-size: 14px;
+  color: #555;
+}
+
+.project-box a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.project-box a:hover {
+  text-decoration: underline;
+}
+
+</style>
 
   <section id="experience">
     <h1>Experience</h1>
@@ -312,32 +467,230 @@
     <ul>
       <li>Ethical Hacking coursework penetration tests on enterprise networks.</li>
       <li>Digital forensics case analysis and report preparation.</li>
-      <li>Web application security assessments and vulnerability scans.</li>
     </ul>
   </section>
 
   <section id="certs">
     <h1>Certifications</h1>
-    <p>Here are my certifications:</p>
-    <ul>
-      <li>TryHackMe Penetration Tester Path Completion</li>
-      <li>Cybersecurity Training & Internship (Oeson)</li>
-    </ul>
+    <div class="certification-list">
+      <div class="certification-card">
+        <img src="path_to_icon_or_image_for_tryhackme.jpg" alt="TryHackMe Penetration Tester" class="cert-icon">
+        <h3>TryHackMe Penetration Tester</h3>
+        <p>Certified professional in penetration testing with hands-on experience from TryHackMe.</p>
+      </div>
+  
+      <div class="certification-card">
+        <img src="path_to_icon_or_image_for_ceh.jpg" alt="Certified Ethical Hacker (CEH)" class="cert-icon">
+        <h3>Certified Ethical Hacker (CEH)</h3>
+        <p>Certified ethical hacker with expertise in identifying and addressing security vulnerabilities.</p>
+      </div>
+    </div>
   </section>
+  <style>
+    #certs {
+      margin: 40px 0;
+      /* font-family: Arial, sans-serif; */
+    }
+  
+    /* #certs h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    } */
+  
+    .certification-list {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+  
+    .certification-card {
+      background-color: #f9f9f9;
+      padding: 20px;
+      width: 250px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+  
+    .certification-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  
+    .cert-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 10px;
+    }
+  
+    .certification-card h3 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+  
+    .certification-card p {
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+  
+  
 
   <section id="skills">
-    <h1>Skills</h1>
-    <p>Technical skills:</p>
-    <ul>
-      <li>Penetration Testing & Vulnerability Scanning</li>
-      <li>Programming: Python, Java, JavaScript, React, Flutter</li>
-      <li>Database Management: PostgreSQL, MongoDB</li>
-    </ul>
+    <h1>Badges & Skills</h1>
+    <div class="skills-list">
+      <h2>Skills</h2>
+      <ul>
+        <li>Penetration Testing & Vulnerability Analysis</li>
+        <li>Python, Java, JavaScript</li>
+        <li>Cybersecurity & Digital Forensics</li>
+      </ul>
+    </div>
+    <div class="badges-list">
+      <h2>TryHackMe Badges</h2>
+      <div class="badges">
+        <img src="path_to_tryhackme_badge1.jpg" alt="TryHackMe Badge 1" class="badge">
+        <img src="path_to_tryhackme_badge2.jpg" alt="TryHackMe Badge 2" class="badge">
+        <img src="path_to_tryhackme_badge3.jpg" alt="TryHackMe Badge 3" class="badge">
+        <!-- Add more badges as needed -->
+      </div>
+    </div>
   </section>
-
+  
+  <style>
+    #skills h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .skills-list {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+  
+    .skills-list ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .skills-list ul li {
+      margin: 10px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+  
+    /* .skills-list ul li:before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: #2e8b57;
+    } */
+  
+    .badges-list {
+      text-align: center;
+    }
+  
+    .badges-list h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .badge {
+      width: 80px;
+      height: 80px;
+      transition: transform 0.3s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .badge:hover {
+      transform: scale(1.1);
+    }
+  </style>
+  
   <section id="education">
     <h1>Education</h1>
-    <p>Computer Security Undergraduate, Plymouth University</p>
+    <div class="degree">
+      <h2>Bachelor's Degree in Computer Science</h2>
+      <p>Plymouth University</p>
+      <p><strong>Duration:</strong> September 2021 - June 2025</p>
+    </div>
+    <div class="foundation">
+      <h3>Foundation Courses</h3>
+      <ul>
+        <li>🎓 Principles of Management & Business</li>
+        <li>🎓 Computer Applications and Programming Fundamentals</li>
+        <li>🎓 English and Soft Skills Development</li>
+        <li>🎓 Fundamentals of Mathematics and Quantitative Techniques</li>
+        <li>🎓 Computer Technology</li>
+      </ul>
+    </div>
+    <div class="completed-modules">
+      <h3>Completed Modules</h3>
+      <ul>
+        <li>🎓 Web Design and Development</li>
+        <li>🎓 Programming in Python</li>
+        <li>🎓 ICT Project Management</li>
+        <li>🎓 Network Fundamentals</li>
+        <li>🎓 Cybersecurity & Digital Forensics</li>
+      </ul>
+    </div>
   </section>
-</body>
+  
+  <style>
+    #education h1 {
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .degree, .foundation, .completed-modules {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #000000;
+      border-radius: 8px;
+      background-color: black;
+    }
+  
+    h2, h3 {
+      font-size: 24px;
+      color: #2e8b57;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    ul li {
+      padding-left: 20px;
+      position: relative;
+      margin: 8px 0;
+    }
+  
+    /* ul li:before {
+      content: "🎓";
+      position: absolute;
+      left: 0;
+      color: #4682b4;
+    } */
+  </style>
+  
 </html>
