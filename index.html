@@ -10,7 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
   <style>
-    /* Existing styles */
     body {
       background-color: #000;
       color: #00FF00;
@@ -33,11 +32,47 @@
       z-index: 1000;
       padding: 10px;
       padding-right: 10px;
+      justify-content: space-between; /* Space between elements */
+      flex-wrap: wrap;
+      flex-grow: 1;
+      height: auto;
+      box-sizing: border-box;
     }
 
     header h1 {
       margin-left: 10px;
-      font-size: 24px; /* Adjust the font size of the header */
+      font-size: 24px;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 100%;
+      margin-top: 10px; /* Space for hamburger */
+      flex-wrap: wrap;
+    }
+
+    .header-links a {
+      color: #00FFFF;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 16px;
+      padding: 5px 10px;
+      border: 1px solid #00FFFF;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-links a i {
+      margin-right: 8px;
+      font-size: 12px;
+    }
+
+    .header-links a:hover {
+      background-color: #00FFFF;
+      color: #000;
     }
 
     .hamburger {
@@ -48,8 +83,8 @@
       width: 30px;
       height: 25px;
       cursor: pointer;
-      z-index: 1001; /* Ensure it stays on top of other content */
-      margin-top: 10px; /* Move hamburger down below header */
+      z-index: 1001;
+      margin-top: 10px;
     }
 
     .hamburger div {
@@ -79,35 +114,6 @@
     nav a:hover {
       border-color: #00FFFF;
       background-color: #222;
-    }
-
-    .header-links {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .header-links a {
-      color: #00FFFF;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 16px;
-      border: 1px solid #00FFFF;
-      padding: 5px 10px;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-    }
-
-    .header-links a i {
-      margin-right: 8px;
-      font-size: 12px;
-    }
-
-    .header-links a:hover {
-      background-color: #00FFFF;
-      color: #000;
     }
 
     section {
@@ -155,53 +161,31 @@
       flex: 1 1 300px;
     }
 
-    /* Hamburger menu styles */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 30px;
-      height: 25px;
-      cursor: pointer;
-      z-index: 1001;
-      margin-top: 10px;
-    }
-
-    .hamburger div {
-      width: 30px;
-      height: 4px;
-      background-color: #00FFFF;
-      border-radius: 5px;
-    }
-
-    /* Mobile screen styles */
     @media (max-width: 768px) {
       header h1 {
-        font-size: 20px; /* Smaller font size for the header */
-        margin-left: 0; /* Remove left margin for the header */
+        font-size: 20px;
+        margin-left: 0;
       }
 
       .hamburger {
-        display: flex; /* Show hamburger on small screens */
-        z-index: 1001; /* Ensure it is on top */
-        margin-left: 10px; /* Adjust margin */
+        display: flex;
+        margin-left: 10px;
       }
 
       nav {
-        display: none; /* Hide nav links on mobile by default */
+        display: none;
         flex-direction: column;
         width: 100%;
         text-align: center;
-        background-color: #111; /* Make the background dark */
-        padding-top: 50px; /* Space for the header */
+        background-color: #111;
+        padding-top: 50px;
         position: absolute;
         top: 50px;
         left: 0;
       }
 
       #nav-menu.show {
-        display: flex; /* Show nav links when hamburger is clicked */
+        display: flex;
       }
 
       nav a {
@@ -223,10 +207,9 @@
       }
     }
 
-    /* Larger screen styles */
     @media (min-width: 769px) {
       .hamburger {
-        display: none; /* Hide hamburger on larger screens */
+        display: none;
       }
 
       nav {
@@ -300,14 +283,6 @@
       <div></div>
       <div></div>
     </div>
-    <nav id="nav-menu">
-      <a href="#whoami">Who Am I?</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-    </nav>
     <div class="header-links">
       <a href="resume.pdf" download="My_Resume.pdf"><i class="fas fa-download"></i>Download Resume</a>
       <a href="https://linkedin.com/in/sasanka-priyantha" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
@@ -316,7 +291,17 @@
         TryHackMe
       </a>      
     </div>
+    <nav id="nav-menu">
+      <a href="#whoami">Who Am I?</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </nav>
   </header>
+
+
 
 
 
