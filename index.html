@@ -26,8 +26,8 @@
       left: 0;
       width: 100%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column; /* Stack header name and hamburger vertically */
+      align-items: flex-start;
       background-color: #111;
       color: #00FFFF;
       z-index: 1000;
@@ -38,6 +38,25 @@
     header h1 {
       margin-left: 10px;
       font-size: 24px; /* Adjust the font size of the header */
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1001; /* Ensure it stays on top of other content */
+      margin-top: 10px; /* Move hamburger down below header */
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: #00FFFF;
+      border-radius: 5px;
     }
 
     nav {
@@ -145,7 +164,7 @@
       width: 30px;
       height: 25px;
       cursor: pointer;
-      z-index: 1001; /* Ensure it stays on top of other content */
+      z-index: 1001;
       margin-top: 10px;
     }
 
@@ -298,6 +317,8 @@
       </a>      
     </div>
   </header>
+
+
 
 
 
