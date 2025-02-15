@@ -152,82 +152,81 @@
       flex: 1 1 300px;
     }
 
-    /* Hamburger menu styles */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 30px;
-      height: 25px;
-      cursor: pointer;
-    }
+/* Hamburger menu styles */
+.hamburger {
+  display: none; /* Hide the hamburger by default */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+}
 
-    .hamburger div {
-      width: 30px;
-      height: 4px;
-      background-color: #00FFFF;
-      border-radius: 5px;
-    }
+.hamburger div {
+  width: 30px;
+  height: 4px;
+  background-color: #00FFFF;
+  border-radius: 5px;
+}
 
-    #nav-menu {
-      display: flex;
-    }
+/* Mobile screen styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex; /* Show hamburger on small screens */
+  }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex; /* Show hamburger menu on mobile */
-      }
+  nav {
+    display: none; /* Hide nav links on mobile by default */
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
 
-      nav {
-        display: none; /* Hide navigation links initially */
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-      }
+  #nav-menu.show {
+    display: flex; /* Show nav links when hamburger is clicked */
+  }
 
-      #nav-menu.show {
-        display: flex; /* Show navigation links when hamburger is clicked */
-      }
+  nav a {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+  }
 
-      nav a {
-        padding: 10px;
-        font-size: 16px;
-        width: 100%;
-      }
+  .header-links {
+    flex-direction: column;
+    align-items: center;
+  }
 
-      .header-links {
-        flex-direction: column;
-        align-items: center;
-      }
+  .header-links a {
+    font-size: 14px;
+    margin: 5px 0;
+    padding: 8px;
+    width: 100%;
+  }
+}
 
-      .header-links a {
-        font-size: 14px;
-        margin: 5px 0;
-        padding: 8px;
-        width: 100%;
-      }
-    }
+/* Larger screen styles */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none; /* Hide hamburger on larger screens */
+  }
 
-    @media (min-width: 769px) {
-      .hamburger {
-        display: none; /* Hide hamburger on larger screens */
-      }
+  nav {
+    display: flex; /* Show nav links on larger screens */
+  }
 
-      nav {
-        display: flex; /* Display nav links directly on larger screens */
-      }
+  .header-links {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
 
-      .header-links {
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        max-width: 100%; /* Prevent overflowing on desktop */
-      }
+  .header-links a {
+    margin: 10px;
+  }
+}
 
-      .header-links a {
-        margin: 10px;
-      }
-    }
 
     html {
       scroll-behavior: smooth;
@@ -276,33 +275,42 @@
       cmdOutput.textContent = ""; // Reset text
       typeEffect(cmdOutput, outputText, 80); // Type the effect
     }
+    document.addEventListener('DOMContentLoaded', () => {
+  // Initialize the hamburger menu toggle
+  document.querySelector('.hamburger').addEventListener('click', () => {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('show');
+  });
+});
+
   </script>
 </head>
 <body>
-  <header>
-    <h1>SASANKA NIMES</h1>
-    <nav id="nav-menu">
-      <a href="#whoami">Who Am I?</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#certs">Certifications</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-    </nav>
-    <div class="header-links">
-      <a href="resume.pdf" download="My_Resume.pdf"><i class="fas fa-download"></i>Download Resume</a>
-      <a href="https://linkedin.com/in/sasanka-priyantha" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
-      <a href="https://tryhackme.com/p/sasanka" target="_blank">
-        <img src="assets/img/fi-snsuxl-tryhackme.svg" alt="TryHackMe Icon" style="width: 15px; height: 15px; margin-right: 8px; background-color: #00FFFF;">
-        TryHackMe
-      </a>      
-    </div>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </header>
+<header>
+  <h1>SASANKA NIMES</h1>
+  <nav id="nav-menu">
+    <a href="#whoami">Who Am I?</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#certs">Certifications</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+  </nav>
+  <div class="header-links">
+    <a href="resume.pdf" download="My_Resume.pdf"><i class="fas fa-download"></i>Download Resume</a>
+    <a href="https://linkedin.com/in/sasanka-priyantha" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a>
+    <a href="https://tryhackme.com/p/sasanka" target="_blank">
+      <img src="/mnt/partition2/MyWebSite/my-portfolio/assets/img/fi-snsuxl-tryhackme.svg" alt="TryHackMe Icon" style="width: 15px; height: 15px; margin-right: 8px; background-color: #00FFFF;">
+      TryHackMe
+    </a>      
+  </div>
+  <div class="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
+
 
   <!-- <section id="whoami">
     <h1>Whoami</h1>
