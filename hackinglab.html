@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking Lab Project</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your website's common CSS -->
+    <style>
+        /* Example of custom styling for the project page */
+        .project-container {
+            background-color: #222;
+            color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            
+        }
+
+        .project-header {
+            font-size: 2em;
+            text-align: center;
+            color: #00FFFF;
+          
+            font-family: 'Share Tech Mono', monospace;
+      z-index: 1000;
+    
+      text-decoration: none;
+    
+      transition: all 0.3s;
+     
+      
+    }
+        
+
+        .step {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #00FFFF;
+            border-radius: 5px;
+        }
+
+        .step h3 {
+            color: #ff6347;
+        }
+
+        .step p {
+            font-size: 1.1em;
+        }
+
+        .command {
+            background-color: #333;
+            color: #00ff00;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="project-container">
+        <div class="project-header">
+            <h1>Hacking Lab Project</h1>
+            <p>Showcasing my penetration testing and hacking labs setup and process</p>
+        </div>
+
+        <div class="step">
+            <h3>STEP 1: Download and Install VirtualBox</h3>
+            <p>Start by downloading and installing VirtualBox from the official website. It’s a free virtualization software that allows you to run multiple virtual machines (VMs) on your system, which is essential for penetration testing and lab setups. You can download VirtualBox by following the steps provided on the official site:</p>
+            <p><strong>Download Link:</strong> <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">Download VirtualBox</a></p>
+            <p><strong>Instructions for Kali Linux users:</strong> As a Kali Linux user, I installed VirtualBox using the following steps:</p>
+        
+            <h4>Preparation:</h4>
+            <p>Before trying to install VirtualBox, ensure that your Kali Linux is up-to-date, the apt sources are properly set, and reboot the machine if required. Run the following commands:</p>
+            <div class="command">
+                sudo apt update
+            </div>
+            <div class="command">
+                sudo apt full-upgrade -y
+            </div>
+            <div class="command">
+                [ -f /var/run/reboot-required ] && sudo reboot -f
+            </div>
+            <p>This will update your system and reboot if necessary.</p>
+        
+            <h4>Installation from Kali Linux repositories:</h4>
+            <p>Now, install VirtualBox and the necessary dependencies by running the following commands:</p>
+            <div class="command">
+                sudo apt install virtualbox linux-headers-generic
+            </div>
+            <p>This command installs VirtualBox and the required Linux headers for integration with the kernel.</p>
+        
+            <h4>Installing the Extension Pack:</h4>
+            <p>If you need to use extra features in VirtualBox, such as USB device support, you can install the extension pack with this command:</p>
+            <div class="command">
+                sudo apt install virtualbox-ext-pack
+            </div>
+            <p>This extension pack adds extra capabilities to VirtualBox, including USB support and VirtualBox RDP.</p>
+        
+            <p><strong>Explanation:</strong> VirtualBox acts as a platform to run Kali Linux, Mr. Robot, and other vulnerable machines that I plan to hack. The Linux headers are needed for VirtualBox to work seamlessly with Kali Linux's kernel, and the extension pack adds useful features for testing and exploitation tasks.</p>
+        
+            <p><strong>Installation Process:</strong> Follow these steps to ensure that VirtualBox is installed and fully set up on Kali Linux. Afterward, you can verify the installation by running the <code>virtualbox</code> command in the terminal to launch the application.</p>
+
+            <p><strong>Screenshot:</strong> Below is an image of the VirtualBox interface.</p>
+
+            <img src="assets/projectsimgs/virtualbox.jpeg" alt="VirtualBox Installed on Kali Linux" width="75%" />
+        </div>
+        
+        
+
+        <div class="step">
+            <h3>STEP 2: Download Kali and Mr. Robot</h3>
+            <p>Next, download Kali Linux and the Mr. Robot vulnerable machine from the following sources:</p>
+            <ul>
+                <li>Download Kali Linux for VirtualBox from the official site: <a href="https://www.kali.org/get-kali/#kali-virtual-machines" target="_blank">Kali Linux Virtual Machines</a>.</li>
+                <li>Download the Mr. Robot vulnerable machine from VulnHub: <a href="https://download.vulnhub.com/mrrobot/mrRobot.ova" target="_blank">Mr. Robot OVA File</a>.</li>
+            </ul>
+            <p><strong>Explanation:</strong> Kali Linux is a powerful penetration testing distro that includes various tools to perform security testing. Mr. Robot is a vulnerable machine that is specifically designed for practicing ethical hacking techniques.</p>
+            <p><strong>Note:</strong> If you download the Kali Linux image as a .7z archive, you'll need to extract it using the following command:</p>
+            <div class="command">
+                7z x kali-linux-*.7z
+            </div>
+            <p>This will extract the Kali Linux image, which you can then import into VirtualBox.</p>
+        </div>
+        
+
+        <div class="step">
+            <h3>STEP 3: Import the OVA Files</h3>
+            <p>Once the OVA files (like the Mr. Robot vulnerable machine) or Kali Linux VirtualBox distribution (such as <code>kali-linux-2024.4-virtualbox-amd64.7z</code>) are downloaded, follow these steps:</p>
+            
+            <p><strong>For Mr. Robot (OVA file):</strong> Simply <strong>double-click</strong> the downloaded OVA file, and VirtualBox will automatically open and navigate to the import screen. You can then rename the virtual machine and adjust the settings before importing.</p>
+            
+            <p><strong>For Kali Linux (7z file):</strong> If you've downloaded the Kali Linux distribution in a compressed <code>.7z</code> file, you first need to extract the contents:</p>
+            <ol>
+                <li>Extract the <code>kali-linux-2024.4-virtualbox-amd64.7z</code> file using an extraction tool (like <code>7zip</code> or <code>tar</code> on Linux):</li>
+                <div class="command">
+                    <code>7z x kali-linux-2024.4-virtualbox-amd64.7z</code>
+                </div>
+                <li>This will extract the <code>kali-linux-2024.4-virtualbox-amd64.ova</code> file, which you can now import into VirtualBox.</li>
+            </ol>
+            
+            <p>After extraction, you can either <strong>double-click</strong> on the extracted <code>kali-linux-2024.4-virtualbox-amd64.ova</code> file, which will automatically start the import process in VirtualBox, or you can import it via the command line:</p>
+            <div class="command">
+                VBoxManage import path_to_kali_ova_file.ova
+            </div>
+            <p>Replace <code>path_to_kali_ova_file.ova</code> with the actual path to the extracted OVA file.</p>
+            
+            <p><strong>For both Mr. Robot and Kali Linux:</strong> After importing the OVA file, you can rename the virtual machine and adjust the settings as needed before clicking "Import" to finalize the process.</p>
+        </div>
+        
+        <div class="step">
+            <h3>STEP 4: Isolate the Network</h3>
+            <p>To ensure that the hacking lab is isolated from your main network and does not affect other devices, configure the network settings in VirtualBox. This will allow communication between virtual machines (VMs) in the lab without connecting to the internet or your host machine.</p>
+        
+            <h4>Option 1: Using Command Line</h4>
+            <p>Run the following commands to create an isolated internal network:</p>
+            <ol>
+                <li>Add a DHCP server to assign IP addresses for the internal network:</li>
+                <div class="command">
+                    vboxmanage dhcpserver add --network=Network_Name --server-ip=192.168.1.1 --lower-ip=192.168.1.10 --upper-ip=192.168.1.50 --networkmask=255.255.255.0 --enable
+                </div>
+                <li>Isolate the network for a specific VM (replace <code>VM_NAME</code> with the name of your virtual machine):</li>
+                <div class="command">
+                    VBoxManage modifyvm "VM_NAME" --nic1 intnet --intnet1 "Network_Name"
+                </div>
+            </ol>
+        
+            <h4>Explanation:</h4>
+            <p>
+                The <code>VBoxManage modifyvm</code> command configures the VM’s first network adapter to use an internal network named <code>Network_Name</code>. The DHCP server assigns IP addresses in the range <code>192.168.1.10-192.168.1.50</code>, ensuring they can communicate without accessing your main network or the internet.
+            </p>
+            <p><strong>IP Address Ranges:</strong> Ensure you use private IP ranges for internal networks, as defined by RFC 1918. Common ranges include:</p>
+            <ul>
+                <li><code>192.168.0.0 – 192.168.255.255</code> (Class C)</li>
+                <li><code>172.16.0.0 – 172.31.255.255</code> (Class B)</li>
+                <li><code>10.0.0.0 – 10.255.255.255</code> (Class A)</li>
+            </ul>
+        
+            <h4>Option 2: Using VirtualBox GUI</h4>
+            <p>Alternatively, you can isolate the network using VirtualBox’s GUI:</p>
+            <ol>
+                <li>Open VirtualBox and select the virtual machine you want to configure.</li>
+                <li>Click on <strong>Settings</strong>, then go to the <strong>Network</strong> section.</li>
+                <li>For <strong>Adapter 1</strong>, select <strong>Attached to: Internal Network</strong> from the drop-down menu.</li>
+                <li>Set the <strong>Network Name</strong> to <code>Network_Name</code> (the same as in the command example).</li>
+                <li>Click <strong>OK</strong> to save the changes.</li>
+            </ol>
+        
+            <p><strong>Note:</strong> Ensure all VMs in the hacking lab are connected to the same internal network (e.g., <code>Network_Name</code>) to enable communication between them while keeping them isolated from your host system and the internet.</p>
+        </div>
+        
+        
+        <div class="step">
+            <h3>STEP 5: Expansion of Network</h3>
+            <p>After completing the basic setup and hacking the Mr. Robot machine, you can expand the hacking lab by adding new vulnerable machines from VulnHub or similar sources. This allows continuous practice on different exploitation techniques within the same isolated environment.</p>
+        
+            <h4>Adding New Machines to the Existing Network</h4>
+            <p>To add more virtual machines (VMs) to the same isolated internal network, use the following command for each new VM:</p>
+            <div class="command">
+                VBoxManage modifyvm "NEW_VM_NAME" --nic1 intnet --intnet1 "Network_Name"
+            </div>
+            <p>This command ensures that all VMs are on the same internal network (e.g., <code>Network_Name</code>), enabling communication between them for testing purposes.</p>
+        
+            <h4>GUI Option:</h4>
+            <p>Alternatively, you can use the VirtualBox GUI:</p>
+            <ol>
+                <li>Select the new virtual machine in VirtualBox.</li>
+                <li>Go to <strong>Settings</strong> → <strong>Network</strong>.</li>
+                <li>Under <strong>Adapter 1</strong>, select <strong>Attached to: Internal Network</strong>.</li>
+                <li>Set the <strong>Network Name</strong> to match the existing network (e.g., <code>Network_Name</code>).</li>
+                <li>Click <strong>OK</strong> to save the changes.</li>
+            </ol>
+        
+            <h4>Note:</h4>
+            <p>Once the Mr. Robot machine has been fully exploited, it can be removed or reset. You can then add and test new vulnerable machines to expand your knowledge and practice more complex hacking scenarios.</p>
+        </div>
+        
+
+  
+        <div class="step">
+            <h3>STEP 6: Hacking and Gaining Access</h3>
+            <p>After setting up the hacking lab, I began penetration testing on the vulnerable machines. Below are the detailed steps for each hacked machine:</p>
+        
+            <h4>1. Mr. Robot (VulnHub)</h4>
+         
+        </div>
+        
+    </div>
+</body>
+</html>
+
